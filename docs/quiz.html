@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>패턴 영어 - 시험</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/quiz.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="back-btn">← 학습으로</a>
+            <span class="header-emoji">📝</span>
+            <h1>패턴 시험</h1>
+            <p class="header-subtitle">학습한 패턴을 테스트해보세요</p>
+        </header>
+
+        <div id="quizSetup" class="quiz-setup">
+            <div class="setup-card">
+                <h2>시험 설정</h2>
+                <div class="setup-option">
+                    <label>Day 선택</label>
+                    <select id="daySelect"></select>
+                </div>
+                <div class="setup-option">
+                    <label>문제 수</label>
+                    <select id="questionCount">
+                        <option value="10">10문제</option>
+                        <option value="20">20문제</option>
+                        <option value="40" selected>40문제 (전체)</option>
+                    </select>
+                </div>
+                <div class="setup-option">
+                    <label>시험 유형</label>
+                    <select id="quizType">
+                        <option value="korean">한글 → 영어</option>
+                        <option value="english">영어 → 한글</option>
+                        <option value="mixed">혼합</option>
+                    </select>
+                </div>
+                <button id="startQuiz" class="start-btn">시험 시작 🚀</button>
+            </div>
+        </div>
+
+        <div id="quizArea" class="quiz-area" style="display:none;">
+            <div class="quiz-progress">
+                <span id="currentQ">1</span> / <span id="totalQ">10</span>
+                <div class="quiz-progress-bar">
+                    <div id="quizProgressBar" class="quiz-progress-fill"></div>
+                </div>
+            </div>
+            <div class="quiz-card">
+                <div class="quiz-type-badge" id="typeBadge">한글 → 영어</div>
+                <div class="quiz-question" id="question"></div>
+                <div class="answer-row">
+                    <input type="text" id="answerInput" class="answer-input" placeholder="정답을 입력하거나 🎤 클릭"
+                        autocomplete="off">
+                    <button id="micBtn" class="mic-btn" onclick="toggleSpeechRecognition()" title="음성으로 답하기">🎤</button>
+                </div>
+                <div class="mic-hint">💡 마이크 버튼을 눌러 음성으로 답해보세요!</div>
+                <div id="feedback" class="feedback"></div>
+                <div class="quiz-buttons">
+                    <button id="checkBtn" class="check-btn">정답 확인</button>
+                    <button id="nextBtn" class="next-btn" style="display:none;">다음 문제 →</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="resultArea" class="result-area" style="display:none;">
+            <div class="result-card">
+                <span class="result-emoji" id="resultEmoji">🎉</span>
+                <h2>시험 완료!</h2>
+                <div class="result-score"><span id="correctCount">0</span> / <span id="totalCount">10</span></div>
+                <div class="result-percent" id="resultPercent">0%</div>
+                <div class="result-message" id="resultMessage"></div>
+                <div class="wrong-list" id="wrongList"></div>
+                <div class="result-buttons">
+                    <button id="retryBtn" class="retry-btn">다시 시험보기</button>
+                    <button id="reviewBtn" class="review-btn">틀린 문제 복습</button>
+                </div>
+            </div>
+        </div>
+
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item">📚 학습</a>
+            <a href="quiz.html" class="nav-item active">📝 시험</a>
+            <a href="review.html" class="nav-item">🔄 복습</a>
+        </nav>
+    </div>
+    <script src="js/data.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+
+</html>

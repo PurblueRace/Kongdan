@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>패턴 영어 - 복습</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/review.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="back-btn">← 학습으로</a>
+            <span class="header-emoji">🔄</span>
+            <h1>복습 모드</h1>
+            <p class="header-subtitle">틀린 문제와 즐겨찾기를 복습하세요</p>
+        </header>
+
+        <div class="review-tabs">
+            <button class="tab-btn active" data-tab="wrong">❌ 틀린 문제 (<span id="wrongCount">0</span>)</button>
+            <button class="tab-btn" data-tab="bookmark">⭐ 즐겨찾기 (<span id="bookmarkCount">0</span>)</button>
+        </div>
+
+        <div id="wrongTab" class="tab-content active">
+            <div id="wrongList" class="review-list"></div>
+            <div id="emptyWrong" class="empty-state">
+                <span>✨</span>
+                <p>틀린 문제가 없어요!</p>
+                <a href="quiz.html" class="start-quiz-btn">시험 보러 가기</a>
+            </div>
+        </div>
+
+        <div id="bookmarkTab" class="tab-content">
+            <div id="bookmarkList" class="review-list"></div>
+            <div id="emptyBookmark" class="empty-state">
+                <span>⭐</span>
+                <p>즐겨찾기한 패턴이 없어요</p>
+                <a href="index.html" class="start-quiz-btn">학습하러 가기</a>
+            </div>
+        </div>
+
+        <div id="flashcardMode" class="flashcard-mode" style="display:none;">
+            <div class="flashcard-header">
+                <button id="closeFlashcard" class="close-btn">✕</button>
+                <span id="flashcardProgress">1 / 10</span>
+            </div>
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-inner">
+                    <div class="flashcard-front">
+                        <p id="flashcardFront"></p><span class="flip-hint">탭하여 뒤집기</span>
+                    </div>
+                    <div class="flashcard-back">
+                        <p id="flashcardBack"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="flashcard-buttons">
+                <button id="flashPrev" class="flash-btn">← 이전</button>
+                <button id="flashNext" class="flash-btn">다음 →</button>
+            </div>
+        </div>
+
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item">📚 학습</a>
+            <a href="quiz.html" class="nav-item">📝 시험</a>
+            <a href="review.html" class="nav-item active">🔄 복습</a>
+        </nav>
+    </div>
+    <script src="js/review.js"></script>
+</body>
+
+</html>
