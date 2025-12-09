@@ -121,72 +121,72 @@
       "vocabulary": [
         {
           "word": "tonight",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "오늘 밤",
           "example": "I'm going to sleep early tonight."
         },
         {
           "word": "grandmother",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "할머니",
           "example": "I'm going to call my grandmother."
         },
         {
           "word": "coffee",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "커피",
           "example": "I'm going to grab some coffee."
         },
         {
           "word": "going",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "가다",
           "example": "I'm going to clean my messy room."
         },
         {
           "word": "finish",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "끝내다",
           "example": "I'm going to finish this boring report."
         },
         {
           "word": "something",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "무언가",
           "example": "I want to buy something nice."
         },
         {
           "word": "somewhere",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "어딘가",
           "example": "I want to travel somewhere warm."
         },
         {
           "word": "spicy",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "매운",
           "example": "I want to try that spicy dish."
         },
         {
           "word": "something",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "무언가",
           "example": "I want to learn something creative."
         },
         {
           "word": "peacefully",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "평화롭게",
           "example": "I want to rest peacefully today."
         },
         {
           "word": "briefly",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "간단히",
           "example": "Can I borrow your laptop briefly?"
         },
         {
           "word": "different",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "다른",
           "example": "Can I get a different size?"
         },
         {
           "word": "something",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "무언가",
           "example": "Can I ask you something personal?"
         },
         {
           "word": "early",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "일찍",
           "example": "Can I leave a bit early today?"
         },
         {
@@ -201,22 +201,22 @@
         },
         {
           "word": "something",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "무언가",
           "example": "Do you want to watch something funny?"
         },
         {
           "word": "delicious",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "맛있는",
           "example": "Do you want to try this delicious cake?"
         },
         {
           "word": "somewhere",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "어딘가",
           "example": "Do you want to go somewhere quiet?"
         },
         {
           "word": "delivery",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "배달",
           "example": "Do you want to order delivery instead?"
         }
       ]
@@ -341,42 +341,42 @@
       "vocabulary": [
         {
           "word": "submit",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "제출하다",
           "example": "I have to submit this urgent report."
         },
         {
           "word": "younger",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "더 젊은",
           "example": "I have to pick up my younger sister."
         },
         {
           "word": "deadline",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "마감일",
           "example": "I have to finish before the deadline."
         },
         {
           "word": "groceries",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "식료품",
           "example": "I have to buy groceries on my way."
         },
         {
           "word": "charge",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "충전하다/청구하다",
           "example": "I have to charge my dead phone."
         },
         {
           "word": "nearest",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "가장 가까운",
           "example": "How do I get to the nearest station?"
         },
         {
           "word": "complicated",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "복잡한",
           "example": "How do I use this complicated app?"
         },
         {
           "word": "pronounce",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "발음하다",
           "example": "How do I pronounce this difficult word?"
         },
         {
@@ -391,12 +391,12 @@
         },
         {
           "word": "explain",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "설명하다",
           "example": "Could you explain that more simply?"
         },
         {
           "word": "recommend",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "추천하다",
           "example": "Could you recommend something popular?"
         },
         {
@@ -411,32 +411,32 @@
         },
         {
           "word": "lower",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "내리다",
           "example": "Could you lower the loud music?"
         },
         {
           "word": "started",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "시작하다",
           "example": "Let's get started right away!"
         },
         {
           "word": "place",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "장소",
           "example": "Let's find a cozy place to sit."
         },
         {
           "word": "something",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "무언가",
           "example": "Let's order something different today."
         },
         {
           "word": "quick",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "빠른",
           "example": "Let's take a quick break first."
         },
         {
           "word": "celebrate",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "축하하다",
           "example": "Let's celebrate this wonderful news!"
         }
       ]
@@ -561,7 +561,7 @@
       "vocabulary": [
         {
           "word": "interesting",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "흥미로운",
           "example": "I like to read interesting novels."
         },
         {
@@ -571,17 +571,17 @@
         },
         {
           "word": "drink",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "마시다",
           "example": "I like to drink hot tea at night."
         },
         {
           "word": "slowly",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "느린",
           "example": "I like to walk slowly in the park."
         },
         {
           "word": "traditional",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "전통적인",
           "example": "I like to cook traditional Korean food."
         },
         {
@@ -591,7 +591,7 @@
         },
         {
           "word": "publicly",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "공개적으로",
           "example": "I don't like to speak publicly."
         },
         {
@@ -606,12 +606,12 @@
         },
         {
           "word": "extremely",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "극도로",
           "example": "I don't like to be extremely busy."
         },
         {
           "word": "small",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "작은",
           "example": "I used to live in a small town."
         },
         {
@@ -621,17 +621,17 @@
         },
         {
           "word": "strong",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "강한",
           "example": "I used to drink strong coffee daily."
         },
         {
           "word": "restaurant",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "식당",
           "example": "I used to work at a busy restaurant."
         },
         {
           "word": "regularly",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "정기적으로",
           "example": "I used to exercise regularly every morning."
         },
         {
@@ -641,7 +641,7 @@
         },
         {
           "word": "someone",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "누군가",
           "example": "I need to talk to someone wise."
         },
         {
@@ -651,12 +651,12 @@
         },
         {
           "word": "prepare",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "준비하다",
           "example": "I need to prepare for the final exam."
         },
         {
           "word": "cluttered",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "어수선한",
           "example": "I need to organize my cluttered desk."
         }
       ]
@@ -786,12 +786,12 @@
         },
         {
           "word": "morning",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "아침",
           "example": "I forgot to set my morning alarm."
         },
         {
           "word": "important",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "중요한",
           "example": "I forgot to save the important document."
         },
         {
@@ -811,7 +811,7 @@
         },
         {
           "word": "positive",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "긍정적인",
           "example": "I'm trying to be more positive daily."
         },
         {
@@ -821,62 +821,62 @@
         },
         {
           "word": "gradually",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "점차",
           "example": "I'm trying to wake up earlier gradually."
         },
         {
           "word": "trying",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "시도하다",
           "example": "I'm trying to focus better at work."
         },
         {
           "word": "thinking",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "생각하다",
           "example": "I'm thinking about getting a new haircut."
         },
         {
           "word": "thinking",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "생각하다",
           "example": "I'm thinking about joining a local gym."
         },
         {
           "word": "thinking",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "생각하다",
           "example": "I'm thinking about adopting a cute puppy."
         },
         {
           "word": "thinking",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "생각하다",
           "example": "I'm thinking about starting a small business."
         },
         {
           "word": "thinking",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "생각하다",
           "example": "I'm thinking about moving to a bigger city."
         },
         {
           "word": "pressure",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "압박",
           "example": "I'm used to working under pressure."
         },
         {
           "word": "eating",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "먹다",
           "example": "I'm used to eating spicy Korean food."
         },
         {
           "word": "weather",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "날씨",
           "example": "I'm used to the cold winter weather."
         },
         {
           "word": "difficult",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "어려운",
           "example": "I'm used to handling difficult customers."
         },
         {
           "word": "independently",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "독립적으로",
           "example": "I'm used to living independently alone."
         }
       ]
@@ -1016,22 +1016,22 @@
         },
         {
           "word": "recommend",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "추천하다",
           "example": "What do you recommend from the menu?"
         },
         {
           "word": "exactly",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "정확히",
           "example": "What do you mean by that exactly?"
         },
         {
           "word": "vegetables",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "채소",
           "example": "Where do you buy fresh vegetables?"
         },
         {
           "word": "usually",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "보통",
           "example": "Where do you usually hang out?"
         },
         {
@@ -1046,17 +1046,17 @@
         },
         {
           "word": "tonight",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "오늘 밤",
           "example": "Where do you want to eat tonight?"
         },
         {
           "word": "usually",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "보통",
           "example": "When do you usually wake up?"
         },
         {
           "word": "free",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "한가한/무료의",
           "example": "When do you have free time?"
         },
         {
@@ -1066,37 +1066,37 @@
         },
         {
           "word": "finish",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "끝내다",
           "example": "When do you finish your shift?"
         },
         {
           "word": "arrive",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "도착하다",
           "example": "When do you want me to arrive?"
         },
         {
           "word": "always",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "항상",
           "example": "Why do you always arrive late?"
         },
         {
           "word": "checking",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "확인하다",
           "example": "Why do you keep checking your phone?"
         },
         {
           "word": "working",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "일",
           "example": "Why do you prefer working alone?"
         },
         {
           "word": "happened",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "일어나다",
           "example": "Why do you think that happened?"
         },
         {
           "word": "extremely",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "극도로",
           "example": "Why do you look so extremely tired?"
         }
       ]
@@ -1221,12 +1221,12 @@
       "vocabulary": [
         {
           "word": "subway",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "지하철",
           "example": "How long does it take by subway?"
         },
         {
           "word": "battery",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "배터리",
           "example": "How long does the battery last?"
         },
         {
@@ -1236,42 +1236,42 @@
         },
         {
           "word": "movie",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "영화",
           "example": "How long does the movie run?"
         },
         {
           "word": "warranty",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "보증",
           "example": "How long does the warranty cover?"
         },
         {
           "word": "parents",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "부모님",
           "example": "How often do you visit your parents?"
         },
         {
           "word": "often",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "종종",
           "example": "How often do you go to the gym?"
         },
         {
           "word": "weekly",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "매주의",
           "example": "How often do you eat out weekly?"
         },
         {
           "word": "often",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "종종",
           "example": "How often do you clean your room?"
         },
         {
           "word": "often",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "종종",
           "example": "How often do you check your email?"
         },
         {
           "word": "jumping",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "점프",
           "example": "Have you ever tried bungee jumping?"
         },
         {
@@ -1286,22 +1286,22 @@
         },
         {
           "word": "someone",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "누군가",
           "example": "Have you ever met someone famous?"
         },
         {
           "word": "wallet",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "지갑",
           "example": "Have you ever lost your wallet?"
         },
         {
           "word": "like",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "좋아하다",
           "example": "Would you like to join our team?"
         },
         {
           "word": "sample",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "견본",
           "example": "Would you like to try this sample?"
         },
         {
@@ -1441,7 +1441,7 @@
       "vocabulary": [
         {
           "word": "something",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "무언가",
           "example": "I feel like eating something sweet."
         },
         {
@@ -1451,7 +1451,7 @@
         },
         {
           "word": "watching",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "지켜하다",
           "example": "I feel like watching a scary movie."
         },
         {
@@ -1461,17 +1461,17 @@
         },
         {
           "word": "calling",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "전화하다",
           "example": "I feel like calling an old friend."
         },
         {
           "word": "upcoming",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "다가오는",
           "example": "I'm excited about the upcoming vacation."
         },
         {
           "word": "excited",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "신난",
           "example": "I'm excited about trying new things."
         },
         {
@@ -1481,52 +1481,52 @@
         },
         {
           "word": "excited",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "신난",
           "example": "I'm excited about meeting your family."
         },
         {
           "word": "excited",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "신난",
           "example": "I'm excited about the concert tonight."
         },
         {
           "word": "difficult",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "어려운",
           "example": "I'm worried about the difficult exam."
         },
         {
           "word": "financial",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "재정의",
           "example": "I'm worried about my financial situation."
         },
         {
           "word": "worried",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "걱정하는",
           "example": "I'm worried about the heavy rain."
         },
         {
           "word": "worried",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "걱정하는",
           "example": "I'm worried about my aging parents."
         },
         {
           "word": "deadline",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "마감일",
           "example": "I'm worried about the tight deadline."
         },
         {
           "word": "eating",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "먹다",
           "example": "I'm tired of eating the same food."
         },
         {
           "word": "explaining",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "설명하다",
           "example": "I'm tired of explaining repeatedly."
         },
         {
           "word": "neighbors",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "이웃",
           "example": "I'm tired of the noisy neighbors."
         },
         {
@@ -1536,7 +1536,7 @@
         },
         {
           "word": "meaningless",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "의미없는",
           "example": "I'm tired of meaningless meetings."
         }
       ]
@@ -1661,32 +1661,32 @@
       "vocabulary": [
         {
           "word": "everything",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "모든 것",
           "example": "I'm glad that everything worked out."
         },
         {
           "word": "safely",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "안전한",
           "example": "I'm glad that you came safely."
         },
         {
           "word": "finally",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "마침내",
           "example": "I'm glad that we finally met."
         },
         {
           "word": "succeeded",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "성공하다",
           "example": "I'm glad that the project succeeded."
         },
         {
           "word": "feeling",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "느끼다",
           "example": "I'm glad that you're feeling better."
         },
         {
           "word": "sorry",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "미안한",
           "example": "I'm sorry for the late reply."
         },
         {
@@ -1701,42 +1701,42 @@
         },
         {
           "word": "anniversary",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "기념일",
           "example": "I'm sorry for forgetting our anniversary."
         },
         {
           "word": "speaking",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "말하다",
           "example": "I'm sorry for speaking too harshly."
         },
         {
           "word": "looking",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "보다",
           "example": "I'm looking forward to our next trip."
         },
         {
           "word": "looking",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "보다",
           "example": "I'm looking forward to seeing you."
         },
         {
           "word": "looking",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "보다",
           "example": "I'm looking forward to the long weekend."
         },
         {
           "word": "looking",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "보다",
           "example": "I'm looking forward to the new season."
         },
         {
           "word": "presentation",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "발표",
           "example": "I'm looking forward to your presentation."
         },
         {
           "word": "correct",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "정확한",
           "example": "I'm not sure if this is correct."
         },
         {
@@ -1751,12 +1751,12 @@
         },
         {
           "word": "buying",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "사다",
           "example": "I'm not sure if it's worth buying."
         },
         {
           "word": "going",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "가다",
           "example": "I'm not sure if we're going right."
         }
       ]
@@ -1881,12 +1881,12 @@
       "vocabulary": [
         {
           "word": "split",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "나누다",
           "example": "Why don't we split the bill?"
         },
         {
           "word": "different",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "다른",
           "example": "Why don't we try a different approach?"
         },
         {
@@ -1896,12 +1896,12 @@
         },
         {
           "word": "tonight",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "오늘 밤",
           "example": "Why don't we order pizza tonight?"
         },
         {
           "word": "invite",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "초대하다",
           "example": "Why don't we invite more people?"
         },
         {
@@ -1931,7 +1931,7 @@
         },
         {
           "word": "speaking",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "말하다",
           "example": "Would you mind speaking more slowly?"
         },
         {
@@ -1946,12 +1946,12 @@
         },
         {
           "word": "waiting",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "기다리다",
           "example": "Would you mind waiting outside briefly?"
         },
         {
           "word": "checking",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "확인하다",
           "example": "Would you mind checking the report?"
         },
         {
@@ -1961,12 +1961,12 @@
         },
         {
           "word": "friend",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "친구",
           "example": "Do you mind if I bring a friend?"
         },
         {
           "word": "charger",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "충전기",
           "example": "Do you mind if I use your charger?"
         },
         {
@@ -2101,27 +2101,27 @@
       "vocabulary": [
         {
           "word": "wondering",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "궁금해하다",
           "example": "I was wondering if you're available."
         },
         {
           "word": "wondering",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "궁금해하다",
           "example": "I was wondering if you could review."
         },
         {
           "word": "wondering",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "궁금해하다",
           "example": "I was wondering if this is included."
         },
         {
           "word": "wondering",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "궁금해하다",
           "example": "I was wondering if you knew anyone."
         },
         {
           "word": "reschedule",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "일정변경",
           "example": "I was wondering if I could reschedule."
         },
         {
@@ -2141,7 +2141,7 @@
         },
         {
           "word": "extend",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "연장하다",
           "example": "I'd like to extend my stay."
         },
         {
@@ -2151,12 +2151,12 @@
         },
         {
           "word": "location",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "위치",
           "example": "Can you tell me the exact location?"
         },
         {
           "word": "delayed",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "미루다",
           "example": "Can you tell me why it's delayed?"
         },
         {
@@ -2166,7 +2166,7 @@
         },
         {
           "word": "works",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "일",
           "example": "Can you tell me how it works?"
         },
         {
@@ -2176,12 +2176,12 @@
         },
         {
           "word": "everything",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "모든 것",
           "example": "I'll handle everything for you."
         },
         {
           "word": "grab",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "잡다/먹다",
           "example": "I'll grab a taxi for you."
         },
         {
@@ -2191,12 +2191,12 @@
         },
         {
           "word": "reschedule",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "일정변경",
           "example": "I'll reschedule the meeting for you."
         },
         {
           "word": "nicely",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "좋은/친절한",
           "example": "I'll wrap it nicely for you."
         }
       ]
@@ -2331,7 +2331,7 @@
         },
         {
           "word": "reasonable",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "합리적인",
           "example": "I think the price is quite reasonable."
         },
         {
@@ -2341,12 +2341,12 @@
         },
         {
           "word": "restaurant",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "식당",
           "example": "I think this restaurant is overrated."
         },
         {
           "word": "entirely",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "전적으로",
           "example": "I don't think that's entirely true."
         },
         {
@@ -2371,12 +2371,12 @@
         },
         {
           "word": "complicated",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "복잡한",
           "example": "It seems like a complicated situation."
         },
         {
           "word": "everyones",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "모두",
           "example": "It seems like everyone's extremely busy."
         },
         {
@@ -2406,17 +2406,17 @@
         },
         {
           "word": "outdated",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "구식의",
           "example": "In my opinion, this design is outdated."
         },
         {
           "word": "extremely",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "극도로",
           "example": "In my opinion, he's extremely talented."
         },
         {
           "word": "everything",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "모든 것",
           "example": "In my opinion, timing is everything."
         }
       ]
@@ -2541,7 +2541,7 @@
       "vocabulary": [
         {
           "word": "anything",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "무엇이든",
           "example": "I believe you can achieve anything."
         },
         {
@@ -2551,17 +2551,17 @@
         },
         {
           "word": "always",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "항상",
           "example": "I believe hard work always pays off."
         },
         {
           "word": "solution",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "해결책",
           "example": "I believe we'll find a better solution."
         },
         {
           "word": "everything",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "모든 것",
           "example": "I believe everything happens for a reason."
         },
         {
@@ -2571,7 +2571,7 @@
         },
         {
           "word": "agree",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "동의하다",
           "example": "I agree that we should start fresh."
         },
         {
@@ -2581,22 +2581,22 @@
         },
         {
           "word": "important",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "중요한",
           "example": "I agree that patience is important."
         },
         {
           "word": "extremely",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "극도로",
           "example": "I agree that this is extremely urgent."
         },
         {
           "word": "studying",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "공부하다",
           "example": "I prefer quiet places for studying."
         },
         {
           "word": "walking",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "걷다",
           "example": "I prefer walking to taking the bus."
         },
         {
@@ -2611,7 +2611,7 @@
         },
         {
           "word": "homemade",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "수제",
           "example": "I prefer homemade food to takeout."
         },
         {
@@ -2621,22 +2621,22 @@
         },
         {
           "word": "correct",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "정확한",
           "example": "I'm sure this is the correct address."
         },
         {
           "word": "somewhere",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "어딘가",
           "example": "I'm sure we've met somewhere before."
         },
         {
           "word": "surprise",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "놀라게 하다",
           "example": "I'm sure they'll love the surprise."
         },
         {
           "word": "everything",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "모든 것",
           "example": "I'm sure everything will work out."
         }
       ]
@@ -2781,12 +2781,12 @@
         },
         {
           "word": "celebrate",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "축하하다",
           "example": "It's time to celebrate our success."
         },
         {
           "word": "working",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "일",
           "example": "I've been working on a secret project."
         },
         {
@@ -2801,7 +2801,7 @@
         },
         {
           "word": "unusually",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "유난히",
           "example": "I've been feeling unusually tired lately."
         },
         {
@@ -2816,7 +2816,7 @@
         },
         {
           "word": "beautiful",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "아름다운",
           "example": "I just spotted a beautiful rainbow."
         },
         {
@@ -2831,7 +2831,7 @@
         },
         {
           "word": "interesting",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "흥미로운",
           "example": "I just heard an interesting rumor."
         },
         {
@@ -2846,12 +2846,12 @@
         },
         {
           "word": "important",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "중요한",
           "example": "I'm about to send an important email."
         },
         {
           "word": "refreshing",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "상쾌한",
           "example": "I'm about to take a refreshing shower."
         },
         {
@@ -2986,7 +2986,7 @@
         },
         {
           "word": "restaurant",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "식당",
           "example": "I haven't tried the famous restaurant yet."
         },
         {
@@ -3011,7 +3011,7 @@
         },
         {
           "word": "already",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "이미",
           "example": "I already made a backup copy."
         },
         {
@@ -3021,12 +3021,12 @@
         },
         {
           "word": "comfortable",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "편안한",
           "example": "I already booked a comfortable hotel."
         },
         {
           "word": "explained",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "설명하다",
           "example": "I already explained the entire situation."
         },
         {
@@ -3046,7 +3046,7 @@
         },
         {
           "word": "everything",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "모든 것",
           "example": "It took me hours to clean everything."
         },
         {
@@ -3061,12 +3061,12 @@
         },
         {
           "word": "rushed",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "돌진하다",
           "example": "As soon as I heard, I rushed over."
         },
         {
           "word": "opens",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "열다",
           "example": "As soon as it opens, I'll be there."
         },
         {
@@ -3076,7 +3076,7 @@
         },
         {
           "word": "stops",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "멈추다",
           "example": "As soon as the rain stops, let's leave."
         }
       ]
@@ -3206,7 +3206,7 @@
         },
         {
           "word": "prepare",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "준비하다",
           "example": "It's better to prepare in advance."
         },
         {
@@ -3216,7 +3216,7 @@
         },
         {
           "word": "apologize",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "사과하다",
           "example": "It's better to apologize sincerely first."
         },
         {
@@ -3246,7 +3246,7 @@
         },
         {
           "word": "morning",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "아침",
           "example": "It's easier to focus in the morning."
         },
         {
@@ -3261,12 +3261,12 @@
         },
         {
           "word": "motivation",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "동기부여",
           "example": "It's harder to work without motivation."
         },
         {
           "word": "rebuild",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "재건하다",
           "example": "It's harder to rebuild broken trust."
         },
         {
@@ -3286,17 +3286,17 @@
         },
         {
           "word": "expensive",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "비싼",
           "example": "The more expensive, the higher quality."
         },
         {
           "word": "stressed",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "스트레스",
           "example": "The more stressed, the worse I sleep."
         },
         {
           "word": "honest",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "정직한",
           "example": "The more honest, the more people trust you."
         }
       ]
@@ -3421,42 +3421,42 @@
       "vocabulary": [
         {
           "word": "expectation",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "기대",
           "example": "It's different from my original expectation."
         },
         {
           "word": "different",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "다른",
           "example": "It's different from the online pictures."
         },
         {
           "word": "different",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "다른",
           "example": "It's different from what I was taught."
         },
         {
           "word": "different",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "다른",
           "example": "It's different from the previous version."
         },
         {
           "word": "traditional",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "전통적인",
           "example": "It's different from Korean traditional culture."
         },
         {
           "word": "similar",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "비슷한",
           "example": "It's similar to my younger sister's style."
         },
         {
           "word": "original",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "원래의",
           "example": "It's similar to the Italian original dish."
         },
         {
           "word": "happened",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "일어나다",
           "example": "It's similar to what happened last time."
         },
         {
@@ -3466,12 +3466,12 @@
         },
         {
           "word": "similar",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "비슷한",
           "example": "It's similar to my mother's cooking."
         },
         {
           "word": "original",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "원래의",
           "example": "It's the same as the original recipe."
         },
         {
@@ -3491,32 +3491,32 @@
         },
         {
           "word": "thinking",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "생각하다",
           "example": "It's the same as what I was thinking."
         },
         {
           "word": "crowded",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "붐비는",
           "example": "It's not as crowded as the main street."
         },
         {
           "word": "simple",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "단순한",
           "example": "It's not as simple as it looks."
         },
         {
           "word": "authentic",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "진정한",
           "example": "It's not as spicy as authentic Korean food."
         },
         {
           "word": "comfortable",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "편안한",
           "example": "It's not as comfortable as my old chair."
         },
         {
           "word": "expensive",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "비싼",
           "example": "It's not as expensive as I expected."
         }
       ]
@@ -3641,7 +3641,7 @@
       "vocabulary": [
         {
           "word": "usually",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "보통",
           "example": "I usually drink black coffee first thing."
         },
         {
@@ -3651,27 +3651,27 @@
         },
         {
           "word": "usually",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "보통",
           "example": "I usually avoid crowded public places."
         },
         {
           "word": "usually",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "보통",
           "example": "I usually cook healthy meals at home."
         },
         {
           "word": "usually",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "보통",
           "example": "I usually respond to emails quickly."
         },
         {
           "word": "important",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "중요한",
           "example": "I always keep my important promises."
         },
         {
           "word": "portable",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "휴대용",
           "example": "I always carry a portable charger."
         },
         {
@@ -3681,12 +3681,12 @@
         },
         {
           "word": "appreciate",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "감사하다",
           "example": "I always appreciate honest feedback."
         },
         {
           "word": "meetings",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "회의",
           "example": "I always arrive at meetings early."
         },
         {
@@ -3696,17 +3696,17 @@
         },
         {
           "word": "morning",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "아침",
           "example": "I never skip my morning workout."
         },
         {
           "word": "extremely",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "극도로",
           "example": "I never eat extremely spicy food."
         },
         {
           "word": "important",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "중요한",
           "example": "I never make important decisions hastily."
         },
         {
@@ -3716,27 +3716,27 @@
         },
         {
           "word": "sometimes",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "가끔",
           "example": "I sometimes treat myself to fancy dinner."
         },
         {
           "word": "sometimes",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "가끔",
           "example": "I sometimes work from a cozy cafe."
         },
         {
           "word": "interesting",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "흥미로운",
           "example": "I sometimes binge-watch interesting series."
         },
         {
           "word": "spontaneous",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "즉흥적인",
           "example": "I sometimes take spontaneous short trips."
         },
         {
           "word": "sometimes",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "가끔",
           "example": "I sometimes wake up unusually early."
         }
       ]
@@ -3861,22 +3861,22 @@
       "vocabulary": [
         {
           "word": "overanalyze",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "과잉분석",
           "example": "I tend to overanalyze simple situations."
         },
         {
           "word": "procrastinate",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "미루다",
           "example": "I tend to procrastinate on boring tasks."
         },
         {
           "word": "comfortable",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "편안한",
           "example": "I tend to prefer familiar comfortable places."
         },
         {
           "word": "sometimes",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "가끔",
           "example": "I tend to speak too quickly sometimes."
         },
         {
@@ -3896,12 +3896,12 @@
         },
         {
           "word": "unconsciously",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "무의식적으로",
           "example": "I keep checking my phone unconsciously."
         },
         {
           "word": "yesterdays",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "어제",
           "example": "I keep thinking about yesterday's awkward moment."
         },
         {
@@ -3911,12 +3911,12 @@
         },
         {
           "word": "staying",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "머무르다",
           "example": "I ended up staying much longer."
         },
         {
           "word": "expensive",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "비싼",
           "example": "I ended up buying three expensive items."
         },
         {
@@ -3926,7 +3926,7 @@
         },
         {
           "word": "watching",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "지켜하다",
           "example": "I ended up watching the entire boring series."
         },
         {
@@ -4081,7 +4081,7 @@
       "vocabulary": [
         {
           "word": "difficult",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "어려운",
           "example": "No matter how difficult, don't give up."
         },
         {
@@ -4091,7 +4091,7 @@
         },
         {
           "word": "expensive",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "비싼",
           "example": "No matter how expensive, quality matters."
         },
         {
@@ -4101,7 +4101,7 @@
         },
         {
           "word": "promise",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "약속하다",
           "example": "No matter how late, I keep my promise."
         },
         {
@@ -4111,22 +4111,22 @@
         },
         {
           "word": "inconvenient",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "불편한",
           "example": "Even if it's inconvenient, it's worth trying."
         },
         {
           "word": "valuable",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "가치있는",
           "example": "Even if you fail, valuable lessons remain."
         },
         {
           "word": "scary",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "무서운",
           "example": "Even if it's scary, face your fear."
         },
         {
           "word": "uncomfortable",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "불편한",
           "example": "Even if it's uncomfortable, be honest."
         },
         {
@@ -4146,7 +4146,7 @@
         },
         {
           "word": "improves",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "향상시키다",
           "example": "Unless the weather improves, we'll cancel."
         },
         {
@@ -4161,12 +4161,12 @@
         },
         {
           "word": "preference",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "선호",
           "example": "It depends on your personal preference."
         },
         {
           "word": "available",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "가능한",
           "example": "It depends on the available budget."
         },
         {
@@ -4301,7 +4301,7 @@
       "vocabulary": [
         {
           "word": "excessive",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "과도한",
           "example": "There's no point in excessive worrying."
         },
         {
@@ -4326,17 +4326,17 @@
         },
         {
           "word": "cautious",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "신중한",
           "example": "There's nothing wrong with being cautious."
         },
         {
           "word": "politely",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "공손한",
           "example": "There's nothing wrong with asking politely."
         },
         {
           "word": "nothing",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "아무것도 아님",
           "example": "There's nothing wrong with taking breaks."
         },
         {
@@ -4346,12 +4346,12 @@
         },
         {
           "word": "different",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "다른",
           "example": "There's nothing wrong with being different."
         },
         {
           "word": "original",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "원래의",
           "example": "What if the original plan fails?"
         },
         {
@@ -4371,7 +4371,7 @@
         },
         {
           "word": "embarrassing",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "당황스러운",
           "example": "What if I make an embarrassing mistake?"
         },
         {
@@ -4381,17 +4381,17 @@
         },
         {
           "word": "frequently",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "자주",
           "example": "I wish I could visit more frequently."
         },
         {
           "word": "complex",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "복잡한",
           "example": "I wish I could understand complex jokes."
         },
         {
           "word": "travel",
-          "meaning": "단어 뜻 확인하기",
+          "meaning": "여행하다",
           "example": "I wish I could travel more freely."
         },
         {
