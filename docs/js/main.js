@@ -80,23 +80,49 @@ async function speakText(text, lang, event) {
 
   const finishSpeaking = () => btn?.classList.remove('speaking');
 
-  // ===== Vertex AI Gemini TTS (영어 전용) =====
+  // ===== Vertex AI Gemini TTS (영어 전용 - Serverless) =====
   if (lang === 'en') {
     try {
+      if (!geminiApiKey) {
+        showToast('⚙️ 설정에서 Gemini API Key를 입력해주세요!');
+        playBrowserTTS(text, lang, finishSpeaking);
+        return;
+      }
+
       showToast('🔊 Gemini가 감정을 잡고 있습니다...'); // 로딩 표시
 
-      const response = await fetch('http://localhost:3001/api/tts', {
+      const prompt = `Read the following text with intense, strong emotion (e.g. excitement, anger, sorrow, joy, urgency) matching the context. Express the feelings vividly. Do NOT act, just read it with feeling. Text: "${text}"`;
+
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${geminiApiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text, lang })
+        body: JSON.stringify({
+          contents: [{
+            parts: [{ text: prompt }]
+          }],
+          generationConfig: {
+            responseModalities: ["AUDIO"],
+            speechConfig: {
+              voiceConfig: {
+                prebuiltVoiceConfig: {
+                  voiceName: "Aoede"
+                }
+              }
+            }
+          }
+        })
       });
 
-      if (!response.ok) throw new Error('API 응답 오류');
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.error?.message || 'API 호출 실패');
+      }
 
       const data = await response.json();
 
-      if (data.audioContent) {
-        const audio = new Audio(`data:audio/mp3;base64,${data.audioContent}`);
+      if (data.candidates && data.candidates[0].content.parts[0].inlineData) {
+        const audioBase64 = data.candidates[0].content.parts[0].inlineData.data;
+        const audio = new Audio(`data:audio/mp3;base64,${audioBase64}`);
         audio.onended = finishSpeaking;
         audio.onerror = () => {
           console.error('오디오 재생 실패');
@@ -107,6 +133,7 @@ async function speakText(text, lang, event) {
       }
     } catch (e) {
       console.error('Gemini TTS 오류:', e);
+      showToast('⚠️ TTS 오류: ' + e.message);
       // 실패 시 브라우저 TTS로 폴백
     }
   }
