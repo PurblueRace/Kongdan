@@ -112,14 +112,17 @@ async function speakText(text, lang, event) {
 
           const sound = new Howl({
             src: [audioUrl],
-            html5: false, // false: Web Audio API 사용 (iOS 볼륨 믹싱/반응성 개선 시도)
+            html5: true, // true: HTML5 Audio (CORS/디코딩 문제 회피)
             format: ['mp3'],
-            preload: true, // 미리 로드
+            volume: 1.0,
+            mute: false,
             onload: function () {
               console.log('Howler Loaded');
             },
             onplay: function () {
-              showToast('▶️ 재생 중 (Play Event)');
+              showToast('▶️ 재생 중!');
+              // 볼륨 강제 설정
+              this.volume(1.0);
             },
             onend: function () {
               finishSpeaking();
@@ -131,12 +134,13 @@ async function speakText(text, lang, event) {
             },
             onplayerror: function (id, err) {
               console.error('Play Error:', err);
-              showToast(`⚠️ 재생 에러: ${err}`);
-              sound.once('unlock', function () {
-                sound.play(); // Unlock 후 재시도
-              });
+              showToast(`⚠️ 재생 에러 -> 브라우저 TTS`);
+              playBrowserTTS(text, lang, finishSpeaking);
             }
           });
+
+          // Howler 글로벌 볼륨 확인
+          Howler.volume(1.0);
 
           sound.play();
           return;
