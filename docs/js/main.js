@@ -101,28 +101,25 @@ async function speakText(text, lang, event) {
       }
 
       if (audioMapping[text]) {
-        showToast(`🎵 MP3 재생 시도: ${audioMapping[text]}`);
+        showToast(`🎵 MP3 재생: ${audioMapping[text]}`);
         try {
           const audioPath = `audio/${audioMapping[text]}`;
+          const audio = new Audio(audioPath);
 
-          // MP3 파일 Fetch
-          const response = await fetch(audioPath);
-          if (!response.ok) throw new Error('Audio file not found');
+          audio.onended = finishSpeaking;
+          audio.onerror = (e) => {
+            console.error('MP3 Error:', e);
+            showToast('⚠️ MP3 에러 -> 브라우저 TTS');
+            playBrowserTTS(text, lang, finishSpeaking);
+          };
 
-          const arrayBuffer = await response.arrayBuffer();
-          const audioBuffer = await window.audioCtx.decodeAudioData(arrayBuffer);
-
-          const source = window.audioCtx.createBufferSource();
-          source.buffer = audioBuffer;
-          source.connect(window.audioCtx.destination);
-
-          source.onended = finishSpeaking;
-          source.start();
+          await audio.play();
           return;
 
         } catch (e) {
           console.error('MP3 재생 실패:', e);
-          // 실패 시 브라우저 TTS로 넘어감
+          showToast(`⚠️ 재생 실패: ${e.message}`);
+          playBrowserTTS(text, lang, finishSpeaking);
         }
       }
 
