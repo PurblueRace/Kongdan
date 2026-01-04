@@ -90,7 +90,7 @@ async function speakText(text, lang, event) {
         window.Kokoro = mod;
       }
       if (!window.kokoroModel) {
-        showToast('⏳ 최신 AI 모델(Kokoro) 다운로드 중... (약 1분 소요)');
+        showToast('⏳ AI 모델 준비 중... (캐시 로드)');
         // 모델 초기화 (q8 양자화 모델 사용 -> 속도 2~3배 향상)
         window.kokoroModel = await window.Kokoro.KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-ONNX", {
           dtype: "q8"
