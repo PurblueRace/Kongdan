@@ -55,6 +55,12 @@ function initTTS() {
 
     loadVoices();
     speechSynthesis.onvoiceschanged = loadVoices;
+
+    // iOS Safari 버그 해결: 첫 번째 speak() 호출이 무시되는 문제
+    // 빈 utterance를 미리 실행하여 TTS 엔진을 활성화
+    const warmUp = new SpeechSynthesisUtterance('');
+    warmUp.volume = 0;
+    speechSynthesis.speak(warmUp);
   }
 }
 
@@ -74,14 +80,45 @@ async function speakText(text, lang, event) {
 
   const finishSpeaking = () => btn?.classList.remove('speaking');
 
-  // ===== 로컬 오디오 파일 재생 (최우선) =====
-  if (audioMapping && audioMapping[text]) {
+  // ===== Vertex AI Gemini TTS (영어 전용) =====
+  if (lang === 'en') {
+    try {
+      showToast('🔊 Gemini가 감정을 잡고 있습니다...'); // 로딩 표시
+
+      const response = await fetch('http://localhost:3001/api/tts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, lang })
+      });
+
+      if (!response.ok) throw new Error('API 응답 오류');
+
+      const data = await response.json();
+
+      if (data.audioContent) {
+        const audio = new Audio(`data:audio/mp3;base64,${data.audioContent}`);
+        audio.onended = finishSpeaking;
+        audio.onerror = () => {
+          console.error('오디오 재생 실패');
+          playBrowserTTS(text, lang, finishSpeaking);
+        };
+        await audio.play();
+        return;
+      }
+    } catch (e) {
+      console.error('Gemini TTS 오류:', e);
+      // 실패 시 브라우저 TTS로 폴백
+    }
+  }
+
+  // ===== 로컬 오디오 파일 재생 (한글 또는 폴백) =====
+  // (영어는 위에서 처리했으므로 여기서는 건너뜀, 필요시 유지 가능)
+  if (lang !== 'en' && audioMapping && audioMapping[text]) {
     try {
       const audioFile = `audio/${audioMapping[text]}`;
       const audio = new Audio(audioFile);
       audio.onended = finishSpeaking;
       audio.onerror = () => {
-        console.log('오디오 파일 로드 실패, 브라우저 TTS로 폴백');
         playBrowserTTS(text, lang, finishSpeaking);
       };
       await audio.play();
