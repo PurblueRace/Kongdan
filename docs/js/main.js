@@ -91,7 +91,17 @@ async function speakText(text, lang, event) {
       }
 
       // ===== 1. 로컬 MP3 재생 (Web Audio API 사용 - Safari 호환) =====
-      if (audioMapping && audioMapping[text]) {
+      console.log('Mapping check:', text, audioMapping ? 'Loaded' : 'Not Loaded');
+
+      if (!audioMapping) {
+        showToast('⚠️ 데이터 로딩 중... 잠시 후 시도하세요.');
+        // 아직 로드 안 됐으면 브라우저 TTS
+        playBrowserTTS(text, lang, finishSpeaking);
+        return;
+      }
+
+      if (audioMapping[text]) {
+        showToast(`🎵 MP3 재생 시도: ${audioMapping[text]}`);
         try {
           const audioPath = `audio/${audioMapping[text]}`;
 
@@ -208,6 +218,7 @@ function initSettingsUI() {
   };
 
   // 저장
+  // 저장
   saveBtn.onclick = () => {
     geminiApiKey = geminiKeyInput.value.trim();
     localStorage.setItem('GEMINI_API_KEY', geminiApiKey);
@@ -216,7 +227,7 @@ function initSettingsUI() {
   };
 }
 
-// ===== 챗봇 (Gemini API) =====
+// === 음성 인식 (Web Speech API) =====
 const CHATBOT_SYSTEM_PROMPT = `넌 영어를 가르치는 친한 친구야. 이름은 "콩쌤".
 
 규칙:
