@@ -91,10 +91,14 @@ async function speakText(text, lang, event) {
       }
       if (!window.kokoroModel) {
         showToast('⏳ 최신 AI 모델(Kokoro) 다운로드 중... (약 1분 소요)');
-        // 모델 초기화
+        // 모델 초기화 (q8 양자화 모델 사용 -> 속도 2~3배 향상)
         window.kokoroModel = await window.Kokoro.KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-ONNX", {
-          dtype: "fp32" // fp32가 안정적 (q8은 더 작지만 호환성 탈 수 있음)
+          dtype: "q8"
         });
+        // 웜업 (미리 공백을 한번 읽어서 파이프라인 예열)
+        console.log("🔥 Kokoro 웜업 시작...");
+        await window.kokoroModel.generate(".", { voice: "af_bella", speed: 1.0 });
+        console.log("✅ Kokoro 웜업 완료");
       }
 
       showToast('🔊 Kokoro AI가 읽어주는 중...');
