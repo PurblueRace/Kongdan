@@ -83,10 +83,14 @@ async function speakText(text, lang, event) {
   // ===== Kokoro TTS (로컬 WebGPU - 완전 무료) =====
   if (lang === 'en') {
     try {
+      if (!window.Kokoro) {
+        showToast('⏳ AI 엔진 로딩 중... 잠시 후 다시 시도해주세요.');
+        return;
+      }
       if (!window.kokoroModel) {
         showToast('⏳ 최신 AI 모델(Kokoro) 다운로드 중... (약 1분 소요)');
         // 모델 초기화
-        window.kokoroModel = await Kokoro.KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-ONNX", {
+        window.kokoroModel = await window.Kokoro.KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-ONNX", {
           dtype: "fp32" // fp32가 안정적 (q8은 더 작지만 호환성 탈 수 있음)
         });
       }
@@ -120,7 +124,8 @@ async function speakText(text, lang, event) {
       console.error('Kokoro TTS 오류:', e);
       // WebGPU 미지원 브라우저 등을 위한 안내
       showToast('⚠️ Kokoro 오류: ' + (e.message || '지원하지 않는 브라우저일 수 있습니다.'));
-      // 실패 시 브라우저 TTS로 폴백
+      finishSpeaking();
+      return; // 폴백 방지
     }
   }
 
