@@ -102,31 +102,39 @@ async function speakText(text, lang, event) {
 
       if (audioMapping[text]) {
         try {
-          const audioUrl = `audio/${audioMapping[text]}`;
-          showToast(`🎵 로딩 중: ${audioMapping[text]}`);
+          const rawFilename = audioMapping[text];
+          // URL Encode (공백, 특수문자 처리)
+          const encodedFilename = encodeURIComponent(rawFilename).replace(/%2E/g, '.'); // .mp3는 유지
+          const audioUrl = `audio/${rawFilename}`; // Howler는 내부적으로 처리함, 하지만 raw가 나을수도
 
-          // Howler.js 사용 (iOS 호환성 최강)
+          showToast(`🎵 파일: ${rawFilename.substring(0, 10)}...`);
+          console.log(`Trying to play: ${audioUrl}`);
+
           const sound = new Howl({
             src: [audioUrl],
-            html5: true, // HTML5 Audio 강제 사용 (모바일 스트리밍 최적화)
-            volume: 1.0,
+            html5: false, // false: Web Audio API 사용 (iOS 볼륨 믹싱/반응성 개선 시도)
+            format: ['mp3'],
+            preload: true, // 미리 로드
+            onload: function () {
+              console.log('Howler Loaded');
+            },
             onplay: function () {
-              showToast('▶️ Howler 재생 시작');
+              showToast('▶️ 재생 중 (Play Event)');
             },
             onend: function () {
               finishSpeaking();
             },
             onloaderror: function (id, err) {
-              console.error('Loader Error:', err);
-              showToast('⚠️ 로드 에러 -> 브라우저 TTS');
+              console.error('Loader Error:', err, audioUrl);
+              showToast(`⚠️ 로드 실패: ${err}`);
               playBrowserTTS(text, lang, finishSpeaking);
             },
             onplayerror: function (id, err) {
               console.error('Play Error:', err);
+              showToast(`⚠️ 재생 에러: ${err}`);
               sound.once('unlock', function () {
-                sound.play();
+                sound.play(); // Unlock 후 재시도
               });
-              showToast('⚠️ 재생 제한 -> 클릭으로 해제 시도');
             }
           });
 
