@@ -80,60 +80,46 @@ async function speakText(text, lang, event) {
 
   const finishSpeaking = () => btn?.classList.remove('speaking');
 
-  // ===== Vertex AI Gemini TTS (영어 전용 - Serverless) =====
+  // ===== Kokoro TTS (로컬 WebGPU - 완전 무료) =====
   if (lang === 'en') {
     try {
-      if (!geminiApiKey) {
-        showToast('⚙️ 설정에서 Gemini API Key를 입력해주세요!');
-        playBrowserTTS(text, lang, finishSpeaking);
-        return;
+      if (!window.kokoroModel) {
+        showToast('⏳ 최신 AI 모델(Kokoro) 다운로드 중... (약 1분 소요)');
+        // 모델 초기화
+        window.kokoroModel = await Kokoro.KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-ONNX", {
+          dtype: "fp32" // fp32가 안정적 (q8은 더 작지만 호환성 탈 수 있음)
+        });
       }
 
-      showToast('🔊 Gemini가 감정을 잡고 있습니다...'); // 로딩 표시
+      showToast('🔊 Kokoro AI가 읽어주는 중...');
 
-      const prompt = `Read the following text with intense, strong emotion (e.g. excitement, anger, sorrow, joy, urgency) matching the context. Express the feelings vividly. Do NOT act, just read it with feeling. Text: "${text}"`;
-
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${geminiApiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{
-            parts: [{ text: prompt }]
-          }],
-          generationConfig: {
-            responseModalities: ["AUDIO"],
-            speechConfig: {
-              voiceConfig: {
-                prebuiltVoiceConfig: {
-                  voiceName: "Aoede"
-                }
-              }
-            }
-          }
-        })
+      // 음성 생성
+      const audio = await window.kokoroModel.generate(text, {
+        voice: "af_bella", // 미국 여성 (가장 인기 있는 음성)
+        speed: 1.0
       });
 
-      if (!response.ok) {
-        const errData = await response.json();
-        throw new Error(errData.error?.message || 'API 호출 실패');
-      }
+      // 오디오 재생
+      const blob = new Blob([audio.toWav()], { type: 'audio/wav' });
+      const audioUrl = URL.createObjectURL(blob);
+      const audioEl = new Audio(audioUrl);
 
-      const data = await response.json();
+      audioEl.onended = () => {
+        finishSpeaking();
+        URL.revokeObjectURL(audioUrl);
+      };
+      audioEl.onerror = () => {
+        console.error('Kokoro 오디오 재생 실패');
+        playBrowserTTS(text, lang, finishSpeaking);
+      };
 
-      if (data.candidates && data.candidates[0].content.parts[0].inlineData) {
-        const audioBase64 = data.candidates[0].content.parts[0].inlineData.data;
-        const audio = new Audio(`data:audio/mp3;base64,${audioBase64}`);
-        audio.onended = finishSpeaking;
-        audio.onerror = () => {
-          console.error('오디오 재생 실패');
-          playBrowserTTS(text, lang, finishSpeaking);
-        };
-        await audio.play();
-        return;
-      }
+      await audioEl.play();
+      return;
+
     } catch (e) {
-      console.error('Gemini TTS 오류:', e);
-      showToast('⚠️ TTS 오류: ' + e.message);
+      console.error('Kokoro TTS 오류:', e);
+      // WebGPU 미지원 브라우저 등을 위한 안내
+      showToast('⚠️ Kokoro 오류: ' + (e.message || '지원하지 않는 브라우저일 수 있습니다.'));
       // 실패 시 브라우저 TTS로 폴백
     }
   }
