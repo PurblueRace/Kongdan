@@ -16,11 +16,11 @@ function initTTS() {
     const loadVoices = () => {
       const voices = speechSynthesis.getVoices();
 
-      // 영어 음성 선택 (Google > Microsoft > 기본)
-      preferredEnglishVoice = voices.find(v => v.name.includes('Google US English'))
+      // 영어 음성 선택 (Microsoft Zira/David > Google > 기본)
+      preferredEnglishVoice = voices.find(v => v.name.includes('Microsoft Zira'))  // Windows 여성
+        || voices.find(v => v.name.includes('Microsoft David'))  // Windows 남성
+        || voices.find(v => v.name.includes('Google US English'))
         || voices.find(v => v.name.includes('Google') && v.lang.startsWith('en'))
-        || voices.find(v => v.name.includes('Microsoft Zira'))  // Windows
-        || voices.find(v => v.name.includes('Microsoft David'))  // Windows
         || voices.find(v => v.name.includes('Samantha'))  // macOS
         || voices.find(v => v.lang === 'en-US')
         || voices.find(v => v.lang.startsWith('en'));
