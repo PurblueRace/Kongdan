@@ -8,19 +8,32 @@ const STORAGE_KEY = 'patternEnglish_completed';
 const CLEARED_KEY = 'patternEnglish_cleared';
 
 // ===== TTS (Text-to-Speech) =====
-let preferredVoice = null;
+let preferredEnglishVoice = null;
+let preferredKoreanVoice = null;
 
 function initTTS() {
-  // 음성 목록이 로드되면 최적의 영어 음성 선택
   if ('speechSynthesis' in window) {
     const loadVoices = () => {
       const voices = speechSynthesis.getVoices();
-      // Google 영어 음성 우선 (가장 자연스러움)
-      preferredVoice = voices.find(v => v.name.includes('Google') && v.lang.startsWith('en'))
-        || voices.find(v => v.name.includes('Samantha')) // macOS
-        || voices.find(v => v.name.includes('Microsoft Zira')) // Windows
-        || voices.find(v => v.lang.startsWith('en-US'))
+
+      // 영어 음성 선택 (Google > Microsoft > 기본)
+      preferredEnglishVoice = voices.find(v => v.name.includes('Google US English'))
+        || voices.find(v => v.name.includes('Google') && v.lang.startsWith('en'))
+        || voices.find(v => v.name.includes('Microsoft Zira'))  // Windows
+        || voices.find(v => v.name.includes('Microsoft David'))  // Windows
+        || voices.find(v => v.name.includes('Samantha'))  // macOS
+        || voices.find(v => v.lang === 'en-US')
         || voices.find(v => v.lang.startsWith('en'));
+
+      // 한글 음성 선택 (Google > Microsoft > 기본)
+      preferredKoreanVoice = voices.find(v => v.name.includes('Google 한국의'))
+        || voices.find(v => v.name.includes('Google') && v.lang.startsWith('ko'))
+        || voices.find(v => v.name.includes('Microsoft Heami'))  // Windows
+        || voices.find(v => v.name.includes('Microsoft SunHi'))  // Windows
+        || voices.find(v => v.lang === 'ko-KR')
+        || voices.find(v => v.lang.startsWith('ko'));
+
+      console.log('🔊 TTS 음성 로드됨 - 영어:', preferredEnglishVoice?.name, '/ 한글:', preferredKoreanVoice?.name);
     };
 
     loadVoices();
@@ -43,7 +56,6 @@ async function speakText(text, lang, event) {
 
   const finishSpeaking = () => btn?.classList.remove('speaking');
 
-  // ===== 브라우저 기본 TTS 사용 =====
   playBrowserTTS(text, lang, finishSpeaking);
 }
 
@@ -58,13 +70,18 @@ function playBrowserTTS(text, lang, finishSpeaking) {
 
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = lang === 'ko' ? 'ko-KR' : 'en-US';
-  utterance.rate = 0.9;
-  utterance.pitch = 1.0;
-  utterance.volume = 1.0;
 
-  if (lang === 'en' && preferredVoice) {
-    utterance.voice = preferredVoice;
+  // 언어별 최적화된 설정
+  if (lang === 'ko') {
+    utterance.voice = preferredKoreanVoice;
+    utterance.rate = 0.95;   // 한글은 조금 빠르게
+    utterance.pitch = 1.05;  // 약간 높은 톤
+  } else {
+    utterance.voice = preferredEnglishVoice;
+    utterance.rate = 0.85;   // 영어는 천천히 (학습용)
+    utterance.pitch = 1.0;
   }
+  utterance.volume = 1.0;
 
   utterance.onend = finishSpeaking;
   utterance.onerror = finishSpeaking;
