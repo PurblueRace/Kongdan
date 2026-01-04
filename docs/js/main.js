@@ -55,12 +55,6 @@ function initTTS() {
 
     loadVoices();
     speechSynthesis.onvoiceschanged = loadVoices;
-
-    // iOS Safari 버그 해결: 첫 번째 speak() 호출이 무시되는 문제
-    // 빈 utterance를 미리 실행하여 TTS 엔진을 활성화
-    const warmUp = new SpeechSynthesisUtterance('');
-    warmUp.volume = 0;
-    speechSynthesis.speak(warmUp);
   }
 }
 
@@ -80,65 +74,22 @@ async function speakText(text, lang, event) {
 
   const finishSpeaking = () => btn?.classList.remove('speaking');
 
-  if (lang === 'en') {
-    try {
-      // 0. AudioContext 준비 (iOS Safari 필수: 클릭 직후 resume)
-      if (!window.audioCtx) {
-        window.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      if (window.audioCtx.state === 'suspended') {
-        await window.audioCtx.resume();
-      }
-
-      // ===== 1. 로컬 MP3 재생 (Web Audio API 사용 - Safari 호환) =====
-      console.log('Mapping check:', text, audioMapping ? 'Loaded' : 'Not Loaded');
-
-      if (!audioMapping) {
-        showToast('⚠️ 데이터 로딩 중... 잠시 후 시도하세요.');
-        // 아직 로드 안 됐으면 브라우저 TTS
-        playBrowserTTS(text, lang, finishSpeaking);
-        return;
-      }
-
-      // ===== 영어 MP3 재생 (한글과 동일한 로직) =====
-      if (audioMapping && audioMapping[text]) {
-        try {
-          const audioFile = `audio/${audioMapping[text]}`;
-          const audio = new Audio(audioFile);
-          audio.onended = finishSpeaking;
-          audio.onerror = () => {
-            console.error('MP3 로드 실패');
-            playBrowserTTS(text, lang, finishSpeaking);
-          };
-          await audio.play();
-          return;
-        } catch (e) {
-          console.error('영어 오디오 재생 오류:', e);
-        }
-      }
-
-      // MP3 없으면 브라우저 TTS
-      playBrowserTTS(text, lang, finishSpeaking);
-    } catch (e) {
-      console.error('Audio Error:', e);
-      playBrowserTTS(text, lang, finishSpeaking);
-    }
-  }
-
-  // ===== 로컬 오디오 파일 재생 (한글 또는 폴백) =====
-  // (영어는 위에서 처리했으므로 여기서는 건너뜀, 필요시 유지 가능)
-  if (lang !== 'en' && audioMapping && audioMapping[text]) {
+  // ===== 로컬 오디오 파일 재생 (최우선) =====
+  if (audioMapping && audioMapping[text]) {
     try {
       const audioFile = `audio/${audioMapping[text]}`;
       const audio = new Audio(audioFile);
       audio.onended = finishSpeaking;
       audio.onerror = () => {
+        console.log('오디오 파일 로드 실패, 브라우저 TTS로 폴백');
         playBrowserTTS(text, lang, finishSpeaking);
       };
       await audio.play();
       return;
     } catch (e) {
       console.error('오디오 재생 오류:', e);
+      playBrowserTTS(text, lang, finishSpeaking);
+      return;
     }
   }
 
@@ -209,7 +160,6 @@ function initSettingsUI() {
   };
 
   // 저장
-  // 저장
   saveBtn.onclick = () => {
     geminiApiKey = geminiKeyInput.value.trim();
     localStorage.setItem('GEMINI_API_KEY', geminiApiKey);
@@ -218,7 +168,7 @@ function initSettingsUI() {
   };
 }
 
-// === 음성 인식 (Web Speech API) =====
+// ===== 챗봇 (Gemini API) =====
 const CHATBOT_SYSTEM_PROMPT = `넌 영어를 가르치는 친한 친구야. 이름은 "콩쌤".
 
 규칙:
