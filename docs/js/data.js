@@ -1,0 +1,4405 @@
+const PATTERNS_DATA = {
+  "dailyGoal": 20,
+  "days": [
+    {
+      "day": 1,
+      "title": "Day 1 패턴 학습",
+      "patterns": [
+        {
+          "id": 1,
+          "title": "I'm going to ~",
+          "description": "~할 거야",
+          "color": "#6366f1",
+          "examples": [
+            {
+              "english": "I'm going to sleep early tonight.",
+              "korean": "오늘 밤 일찍 잘 거야."
+            },
+            {
+              "english": "I'm going to call my grandmother.",
+              "korean": "할머니한테 전화할 거야."
+            },
+            {
+              "english": "I'm going to grab some coffee.",
+              "korean": "커피 좀 사올 거야."
+            },
+            {
+              "english": "I'm going to clean my messy room.",
+              "korean": "지저분한 방 청소할 거야."
+            },
+            {
+              "english": "I'm going to finish this boring report.",
+              "korean": "이 지루한 보고서 끝낼 거야."
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "I want to ~",
+          "description": "~하고 싶어",
+          "color": "#ec4899",
+          "examples": [
+            {
+              "english": "I want to buy something nice.",
+              "korean": "뭔가 좋은 거 사고 싶어."
+            },
+            {
+              "english": "I want to travel somewhere warm.",
+              "korean": "따뜻한 곳으로 여행가고 싶어."
+            },
+            {
+              "english": "I want to try that spicy dish.",
+              "korean": "저 매운 음식 먹어보고 싶어."
+            },
+            {
+              "english": "I want to learn something creative.",
+              "korean": "창의적인 뭔가 배우고 싶어."
+            },
+            {
+              "english": "I want to rest peacefully today.",
+              "korean": "오늘은 평화롭게 쉬고 싶어."
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Can I ~?",
+          "description": "~해도 돼요?",
+          "color": "#10b981",
+          "examples": [
+            {
+              "english": "Can I borrow your laptop briefly?",
+              "korean": "노트북 잠깐 빌려도 돼요?"
+            },
+            {
+              "english": "Can I get a different size?",
+              "korean": "다른 사이즈로 받을 수 있어요?"
+            },
+            {
+              "english": "Can I ask you something personal?",
+              "korean": "개인적인 거 물어봐도 돼요?"
+            },
+            {
+              "english": "Can I leave a bit early today?",
+              "korean": "오늘 조금 일찍 가도 돼요?"
+            },
+            {
+              "english": "Can I pay with my credit card?",
+              "korean": "신용카드로 결제해도 돼요?"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Do you want to ~?",
+          "description": "~할래요?",
+          "color": "#f59e0b",
+          "examples": [
+            {
+              "english": "Do you want to grab lunch together?",
+              "korean": "같이 점심 먹을래?"
+            },
+            {
+              "english": "Do you want to watch something funny?",
+              "korean": "재밌는 거 볼래?"
+            },
+            {
+              "english": "Do you want to try this delicious cake?",
+              "korean": "이 맛있는 케이크 먹어볼래?"
+            },
+            {
+              "english": "Do you want to go somewhere quiet?",
+              "korean": "조용한 데로 갈래?"
+            },
+            {
+              "english": "Do you want to order delivery instead?",
+              "korean": "대신 배달 시킬래?"
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "tonight",
+          "meaning": "오늘 밤",
+          "example": "I'm going to sleep early tonight."
+        },
+        {
+          "word": "grandmother",
+          "meaning": "할머니",
+          "example": "I'm going to call my grandmother."
+        },
+        {
+          "word": "coffee",
+          "meaning": "커피",
+          "example": "I'm going to grab some coffee."
+        },
+        {
+          "word": "going",
+          "meaning": "가다",
+          "example": "I'm going to clean my messy room."
+        },
+        {
+          "word": "finish",
+          "meaning": "끝내다",
+          "example": "I'm going to finish this boring report."
+        },
+        {
+          "word": "something",
+          "meaning": "무언가",
+          "example": "I want to buy something nice."
+        },
+        {
+          "word": "somewhere",
+          "meaning": "어딘가",
+          "example": "I want to travel somewhere warm."
+        },
+        {
+          "word": "spicy",
+          "meaning": "매운",
+          "example": "I want to try that spicy dish."
+        },
+        {
+          "word": "something",
+          "meaning": "무언가",
+          "example": "I want to learn something creative."
+        },
+        {
+          "word": "peacefully",
+          "meaning": "평화롭게",
+          "example": "I want to rest peacefully today."
+        },
+        {
+          "word": "briefly",
+          "meaning": "간단히",
+          "example": "Can I borrow your laptop briefly?"
+        },
+        {
+          "word": "different",
+          "meaning": "다른",
+          "example": "Can I get a different size?"
+        },
+        {
+          "word": "something",
+          "meaning": "무언가",
+          "example": "Can I ask you something personal?"
+        },
+        {
+          "word": "early",
+          "meaning": "일찍",
+          "example": "Can I leave a bit early today?"
+        },
+        {
+          "word": "credit",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Can I pay with my credit card?"
+        },
+        {
+          "word": "together",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Do you want to grab lunch together?"
+        },
+        {
+          "word": "something",
+          "meaning": "무언가",
+          "example": "Do you want to watch something funny?"
+        },
+        {
+          "word": "delicious",
+          "meaning": "맛있는",
+          "example": "Do you want to try this delicious cake?"
+        },
+        {
+          "word": "somewhere",
+          "meaning": "어딘가",
+          "example": "Do you want to go somewhere quiet?"
+        },
+        {
+          "word": "delivery",
+          "meaning": "배달",
+          "example": "Do you want to order delivery instead?"
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Day 2 패턴 학습",
+      "patterns": [
+        {
+          "id": 5,
+          "title": "I have to ~",
+          "description": "~해야 해",
+          "color": "#ef4444",
+          "examples": [
+            {
+              "english": "I have to submit this urgent report.",
+              "korean": "이 급한 보고서 제출해야 해."
+            },
+            {
+              "english": "I have to pick up my younger sister.",
+              "korean": "여동생 데리러 가야 해."
+            },
+            {
+              "english": "I have to finish before the deadline.",
+              "korean": "마감 전에 끝내야 해."
+            },
+            {
+              "english": "I have to buy groceries on my way.",
+              "korean": "가는 길에 장 봐야 해."
+            },
+            {
+              "english": "I have to charge my dead phone.",
+              "korean": "꺼진 폰 충전해야 해."
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "title": "How do I ~?",
+          "description": "어떻게 ~해요?",
+          "color": "#8b5cf6",
+          "examples": [
+            {
+              "english": "How do I get to the nearest station?",
+              "korean": "가장 가까운 역에 어떻게 가요?"
+            },
+            {
+              "english": "How do I use this complicated app?",
+              "korean": "이 복잡한 앱 어떻게 써요?"
+            },
+            {
+              "english": "How do I pronounce this difficult word?",
+              "korean": "이 어려운 단어 어떻게 발음해요?"
+            },
+            {
+              "english": "How do I connect to the wireless network?",
+              "korean": "무선 네트워크에 어떻게 연결해요?"
+            },
+            {
+              "english": "How do I cancel my monthly subscription?",
+              "korean": "월간 구독 어떻게 취소해요?"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "title": "Could you ~?",
+          "description": "~해주실 수 있어요?",
+          "color": "#06b6d4",
+          "examples": [
+            {
+              "english": "Could you explain that more simply?",
+              "korean": "좀 더 간단히 설명해주실 수 있어요?"
+            },
+            {
+              "english": "Could you recommend something popular?",
+              "korean": "인기 있는 거 추천해주실 수 있어요?"
+            },
+            {
+              "english": "Could you check my written answer?",
+              "korean": "제 답안 확인해주실 수 있어요?"
+            },
+            {
+              "english": "Could you send me the updated file?",
+              "korean": "업데이트된 파일 보내주실 수 있어요?"
+            },
+            {
+              "english": "Could you lower the loud music?",
+              "korean": "시끄러운 음악 줄여주실 수 있어요?"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "title": "Let's ~",
+          "description": "~하자",
+          "color": "#84cc16",
+          "examples": [
+            {
+              "english": "Let's get started right away!",
+              "korean": "바로 시작하자!"
+            },
+            {
+              "english": "Let's find a cozy place to sit.",
+              "korean": "앉을 아늑한 자리 찾자."
+            },
+            {
+              "english": "Let's order something different today.",
+              "korean": "오늘은 다른 거 시키자."
+            },
+            {
+              "english": "Let's take a quick break first.",
+              "korean": "먼저 잠깐 쉬자."
+            },
+            {
+              "english": "Let's celebrate this wonderful news!",
+              "korean": "이 멋진 소식 축하하자!"
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "submit",
+          "meaning": "제출하다",
+          "example": "I have to submit this urgent report."
+        },
+        {
+          "word": "younger",
+          "meaning": "더 젊은",
+          "example": "I have to pick up my younger sister."
+        },
+        {
+          "word": "deadline",
+          "meaning": "마감일",
+          "example": "I have to finish before the deadline."
+        },
+        {
+          "word": "groceries",
+          "meaning": "식료품",
+          "example": "I have to buy groceries on my way."
+        },
+        {
+          "word": "charge",
+          "meaning": "충전하다/청구하다",
+          "example": "I have to charge my dead phone."
+        },
+        {
+          "word": "nearest",
+          "meaning": "가장 가까운",
+          "example": "How do I get to the nearest station?"
+        },
+        {
+          "word": "complicated",
+          "meaning": "복잡한",
+          "example": "How do I use this complicated app?"
+        },
+        {
+          "word": "pronounce",
+          "meaning": "발음하다",
+          "example": "How do I pronounce this difficult word?"
+        },
+        {
+          "word": "wireless",
+          "meaning": "단어 뜻 확인하기",
+          "example": "How do I connect to the wireless network?"
+        },
+        {
+          "word": "subscription",
+          "meaning": "단어 뜻 확인하기",
+          "example": "How do I cancel my monthly subscription?"
+        },
+        {
+          "word": "explain",
+          "meaning": "설명하다",
+          "example": "Could you explain that more simply?"
+        },
+        {
+          "word": "recommend",
+          "meaning": "추천하다",
+          "example": "Could you recommend something popular?"
+        },
+        {
+          "word": "written",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Could you check my written answer?"
+        },
+        {
+          "word": "updated",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Could you send me the updated file?"
+        },
+        {
+          "word": "lower",
+          "meaning": "내리다",
+          "example": "Could you lower the loud music?"
+        },
+        {
+          "word": "started",
+          "meaning": "시작하다",
+          "example": "Let's get started right away!"
+        },
+        {
+          "word": "place",
+          "meaning": "장소",
+          "example": "Let's find a cozy place to sit."
+        },
+        {
+          "word": "something",
+          "meaning": "무언가",
+          "example": "Let's order something different today."
+        },
+        {
+          "word": "quick",
+          "meaning": "빠른",
+          "example": "Let's take a quick break first."
+        },
+        {
+          "word": "celebrate",
+          "meaning": "축하하다",
+          "example": "Let's celebrate this wonderful news!"
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Day 3 패턴 학습",
+      "patterns": [
+        {
+          "id": 9,
+          "title": "I like to ~",
+          "description": "~하는 게 좋아",
+          "color": "#f472b6",
+          "examples": [
+            {
+              "english": "I like to read interesting novels.",
+              "korean": "재미있는 소설 읽는 게 좋아."
+            },
+            {
+              "english": "I like to wake up early in summer.",
+              "korean": "여름에 일찍 일어나는 게 좋아."
+            },
+            {
+              "english": "I like to drink hot tea at night.",
+              "korean": "밤에 뜨거운 차 마시는 게 좋아."
+            },
+            {
+              "english": "I like to walk slowly in the park.",
+              "korean": "공원에서 천천히 걷는 게 좋아."
+            },
+            {
+              "english": "I like to cook traditional Korean food.",
+              "korean": "전통 한식 요리하는 게 좋아."
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "title": "I don't like to ~",
+          "description": "~하는 게 싫어",
+          "color": "#fb7185",
+          "examples": [
+            {
+              "english": "I don't like to eat raw fish.",
+              "korean": "생선회 먹는 게 싫어."
+            },
+            {
+              "english": "I don't like to speak publicly.",
+              "korean": "대중 앞에서 말하는 게 싫어."
+            },
+            {
+              "english": "I don't like to wear tight clothes.",
+              "korean": "꽉 끼는 옷 입는 게 싫어."
+            },
+            {
+              "english": "I don't like to drive at night.",
+              "korean": "밤에 운전하는 게 싫어."
+            },
+            {
+              "english": "I don't like to be extremely busy.",
+              "korean": "엄청 바쁜 게 싫어."
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "title": "I used to ~",
+          "description": "예전에 ~했었어",
+          "color": "#a78bfa",
+          "examples": [
+            {
+              "english": "I used to live in a small town.",
+              "korean": "예전에 작은 마을에 살았어."
+            },
+            {
+              "english": "I used to play the acoustic guitar.",
+              "korean": "예전에 어쿠스틱 기타 쳤었어."
+            },
+            {
+              "english": "I used to drink strong coffee daily.",
+              "korean": "예전에 매일 진한 커피 마셨었어."
+            },
+            {
+              "english": "I used to work at a busy restaurant.",
+              "korean": "예전에 바쁜 식당에서 일했었어."
+            },
+            {
+              "english": "I used to exercise regularly every morning.",
+              "korean": "예전에 매일 아침 규칙적으로 운동했었어."
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "title": "I need to ~",
+          "description": "~해야 돼",
+          "color": "#34d399",
+          "examples": [
+            {
+              "english": "I need to find a cheaper option.",
+              "korean": "더 저렴한 옵션 찾아야 돼."
+            },
+            {
+              "english": "I need to talk to someone wise.",
+              "korean": "현명한 사람이랑 얘기해야 돼."
+            },
+            {
+              "english": "I need to fix my broken laptop.",
+              "korean": "고장 난 노트북 고쳐야 돼."
+            },
+            {
+              "english": "I need to prepare for the final exam.",
+              "korean": "기말고사 준비해야 돼."
+            },
+            {
+              "english": "I need to organize my cluttered desk.",
+              "korean": "어지러운 책상 정리해야 돼."
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "interesting",
+          "meaning": "흥미로운",
+          "example": "I like to read interesting novels."
+        },
+        {
+          "word": "summer",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I like to wake up early in summer."
+        },
+        {
+          "word": "drink",
+          "meaning": "마시다",
+          "example": "I like to drink hot tea at night."
+        },
+        {
+          "word": "slowly",
+          "meaning": "느린",
+          "example": "I like to walk slowly in the park."
+        },
+        {
+          "word": "traditional",
+          "meaning": "전통적인",
+          "example": "I like to cook traditional Korean food."
+        },
+        {
+          "word": "dont",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I don't like to eat raw fish."
+        },
+        {
+          "word": "publicly",
+          "meaning": "공개적으로",
+          "example": "I don't like to speak publicly."
+        },
+        {
+          "word": "clothes",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I don't like to wear tight clothes."
+        },
+        {
+          "word": "drive",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I don't like to drive at night."
+        },
+        {
+          "word": "extremely",
+          "meaning": "극도로",
+          "example": "I don't like to be extremely busy."
+        },
+        {
+          "word": "small",
+          "meaning": "작은",
+          "example": "I used to live in a small town."
+        },
+        {
+          "word": "acoustic",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I used to play the acoustic guitar."
+        },
+        {
+          "word": "strong",
+          "meaning": "강한",
+          "example": "I used to drink strong coffee daily."
+        },
+        {
+          "word": "restaurant",
+          "meaning": "식당",
+          "example": "I used to work at a busy restaurant."
+        },
+        {
+          "word": "regularly",
+          "meaning": "정기적으로",
+          "example": "I used to exercise regularly every morning."
+        },
+        {
+          "word": "cheaper",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I need to find a cheaper option."
+        },
+        {
+          "word": "someone",
+          "meaning": "누군가",
+          "example": "I need to talk to someone wise."
+        },
+        {
+          "word": "broken",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I need to fix my broken laptop."
+        },
+        {
+          "word": "prepare",
+          "meaning": "준비하다",
+          "example": "I need to prepare for the final exam."
+        },
+        {
+          "word": "cluttered",
+          "meaning": "어수선한",
+          "example": "I need to organize my cluttered desk."
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Day 4 패턴 학습",
+      "patterns": [
+        {
+          "id": 13,
+          "title": "I forgot to ~",
+          "description": "~하는 걸 깜빡했어",
+          "color": "#fbbf24",
+          "examples": [
+            {
+              "english": "I forgot to bring my thick jacket.",
+              "korean": "두꺼운 자켓 가져오는 걸 깜빡했어."
+            },
+            {
+              "english": "I forgot to set my morning alarm.",
+              "korean": "아침 알람 맞추는 걸 깜빡했어."
+            },
+            {
+              "english": "I forgot to save the important document.",
+              "korean": "중요한 문서 저장하는 걸 깜빡했어."
+            },
+            {
+              "english": "I forgot to water the indoor plants.",
+              "korean": "실내 화분에 물 주는 걸 깜빡했어."
+            },
+            {
+              "english": "I forgot to turn off the bright lights.",
+              "korean": "밝은 불 끄는 걸 깜빡했어."
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "title": "I'm trying to ~",
+          "description": "~하려고 노력 중이야",
+          "color": "#60a5fa",
+          "examples": [
+            {
+              "english": "I'm trying to eat healthier food.",
+              "korean": "더 건강한 음식 먹으려고 노력 중이야."
+            },
+            {
+              "english": "I'm trying to be more positive daily.",
+              "korean": "매일 더 긍정적이려고 노력 중이야."
+            },
+            {
+              "english": "I'm trying to spend less carelessly.",
+              "korean": "덜 함부로 쓰려고 노력 중이야."
+            },
+            {
+              "english": "I'm trying to wake up earlier gradually.",
+              "korean": "점점 더 일찍 일어나려고 노력 중이야."
+            },
+            {
+              "english": "I'm trying to focus better at work.",
+              "korean": "일할 때 더 집중하려고 노력 중이야."
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "title": "I'm thinking about ~",
+          "description": "~할까 생각 중이야",
+          "color": "#c084fc",
+          "examples": [
+            {
+              "english": "I'm thinking about getting a new haircut.",
+              "korean": "새 헤어스타일 할까 생각 중이야."
+            },
+            {
+              "english": "I'm thinking about joining a local gym.",
+              "korean": "동네 헬스장 등록할까 생각 중이야."
+            },
+            {
+              "english": "I'm thinking about adopting a cute puppy.",
+              "korean": "귀여운 강아지 입양할까 생각 중이야."
+            },
+            {
+              "english": "I'm thinking about starting a small business.",
+              "korean": "작은 사업 시작할까 생각 중이야."
+            },
+            {
+              "english": "I'm thinking about moving to a bigger city.",
+              "korean": "더 큰 도시로 이사할까 생각 중이야."
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "title": "I'm used to ~",
+          "description": "~하는 데 익숙해",
+          "color": "#2dd4bf",
+          "examples": [
+            {
+              "english": "I'm used to working under pressure.",
+              "korean": "압박 속에서 일하는 데 익숙해."
+            },
+            {
+              "english": "I'm used to eating spicy Korean food.",
+              "korean": "매운 한국 음식 먹는 데 익숙해."
+            },
+            {
+              "english": "I'm used to the cold winter weather.",
+              "korean": "추운 겨울 날씨에 익숙해."
+            },
+            {
+              "english": "I'm used to handling difficult customers.",
+              "korean": "까다로운 고객 상대하는 데 익숙해."
+            },
+            {
+              "english": "I'm used to living independently alone.",
+              "korean": "혼자 독립적으로 사는 데 익숙해."
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "forgot",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I forgot to bring my thick jacket."
+        },
+        {
+          "word": "morning",
+          "meaning": "아침",
+          "example": "I forgot to set my morning alarm."
+        },
+        {
+          "word": "important",
+          "meaning": "중요한",
+          "example": "I forgot to save the important document."
+        },
+        {
+          "word": "forgot",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I forgot to water the indoor plants."
+        },
+        {
+          "word": "forgot",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I forgot to turn off the bright lights."
+        },
+        {
+          "word": "healthier",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I'm trying to eat healthier food."
+        },
+        {
+          "word": "positive",
+          "meaning": "긍정적인",
+          "example": "I'm trying to be more positive daily."
+        },
+        {
+          "word": "carelessly",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I'm trying to spend less carelessly."
+        },
+        {
+          "word": "gradually",
+          "meaning": "점차",
+          "example": "I'm trying to wake up earlier gradually."
+        },
+        {
+          "word": "trying",
+          "meaning": "시도하다",
+          "example": "I'm trying to focus better at work."
+        },
+        {
+          "word": "thinking",
+          "meaning": "생각하다",
+          "example": "I'm thinking about getting a new haircut."
+        },
+        {
+          "word": "thinking",
+          "meaning": "생각하다",
+          "example": "I'm thinking about joining a local gym."
+        },
+        {
+          "word": "thinking",
+          "meaning": "생각하다",
+          "example": "I'm thinking about adopting a cute puppy."
+        },
+        {
+          "word": "thinking",
+          "meaning": "생각하다",
+          "example": "I'm thinking about starting a small business."
+        },
+        {
+          "word": "thinking",
+          "meaning": "생각하다",
+          "example": "I'm thinking about moving to a bigger city."
+        },
+        {
+          "word": "pressure",
+          "meaning": "압박",
+          "example": "I'm used to working under pressure."
+        },
+        {
+          "word": "eating",
+          "meaning": "먹다",
+          "example": "I'm used to eating spicy Korean food."
+        },
+        {
+          "word": "weather",
+          "meaning": "날씨",
+          "example": "I'm used to the cold winter weather."
+        },
+        {
+          "word": "difficult",
+          "meaning": "어려운",
+          "example": "I'm used to handling difficult customers."
+        },
+        {
+          "word": "independently",
+          "meaning": "독립적으로",
+          "example": "I'm used to living independently alone."
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Day 5 패턴 학습",
+      "patterns": [
+        {
+          "id": 17,
+          "title": "What do you ~?",
+          "description": "뭘 ~해요?",
+          "color": "#f97316",
+          "examples": [
+            {
+              "english": "What do you usually do on weekends?",
+              "korean": "주말에 보통 뭐 해요?"
+            },
+            {
+              "english": "What do you think about this new design?",
+              "korean": "이 새 디자인 어떻게 생각해요?"
+            },
+            {
+              "english": "What do you want for your birthday?",
+              "korean": "생일에 뭐 받고 싶어요?"
+            },
+            {
+              "english": "What do you recommend from the menu?",
+              "korean": "메뉴에서 뭐 추천해요?"
+            },
+            {
+              "english": "What do you mean by that exactly?",
+              "korean": "정확히 무슨 뜻이에요?"
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "title": "Where do you ~?",
+          "description": "어디서 ~해요?",
+          "color": "#14b8a6",
+          "examples": [
+            {
+              "english": "Where do you buy fresh vegetables?",
+              "korean": "신선한 채소 어디서 사요?"
+            },
+            {
+              "english": "Where do you usually hang out?",
+              "korean": "보통 어디서 놀아요?"
+            },
+            {
+              "english": "Where do you get your hair done?",
+              "korean": "머리 어디서 해요?"
+            },
+            {
+              "english": "Where do you park your car?",
+              "korean": "차 어디에 주차해요?"
+            },
+            {
+              "english": "Where do you want to eat tonight?",
+              "korean": "오늘 저녁 어디서 먹고 싶어요?"
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "title": "When do you ~?",
+          "description": "언제 ~해요?",
+          "color": "#8b5cf6",
+          "examples": [
+            {
+              "english": "When do you usually wake up?",
+              "korean": "보통 언제 일어나요?"
+            },
+            {
+              "english": "When do you have free time?",
+              "korean": "언제 시간 돼요?"
+            },
+            {
+              "english": "When do you plan to get married?",
+              "korean": "결혼 언제 할 계획이에요?"
+            },
+            {
+              "english": "When do you finish your shift?",
+              "korean": "근무 언제 끝나요?"
+            },
+            {
+              "english": "When do you want me to arrive?",
+              "korean": "제가 언제 도착하면 돼요?"
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "title": "Why do you ~?",
+          "description": "왜 ~해요?",
+          "color": "#ec4899",
+          "examples": [
+            {
+              "english": "Why do you always arrive late?",
+              "korean": "왜 항상 늦게 와요?"
+            },
+            {
+              "english": "Why do you keep checking your phone?",
+              "korean": "왜 자꾸 폰 확인해요?"
+            },
+            {
+              "english": "Why do you prefer working alone?",
+              "korean": "왜 혼자 일하는 걸 선호해요?"
+            },
+            {
+              "english": "Why do you think that happened?",
+              "korean": "왜 그런 일이 생겼다고 생각해요?"
+            },
+            {
+              "english": "Why do you look so extremely tired?",
+              "korean": "왜 그렇게 엄청 피곤해 보여요?"
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "weekends",
+          "meaning": "단어 뜻 확인하기",
+          "example": "What do you usually do on weekends?"
+        },
+        {
+          "word": "design",
+          "meaning": "단어 뜻 확인하기",
+          "example": "What do you think about this new design?"
+        },
+        {
+          "word": "birthday",
+          "meaning": "단어 뜻 확인하기",
+          "example": "What do you want for your birthday?"
+        },
+        {
+          "word": "recommend",
+          "meaning": "추천하다",
+          "example": "What do you recommend from the menu?"
+        },
+        {
+          "word": "exactly",
+          "meaning": "정확히",
+          "example": "What do you mean by that exactly?"
+        },
+        {
+          "word": "vegetables",
+          "meaning": "채소",
+          "example": "Where do you buy fresh vegetables?"
+        },
+        {
+          "word": "usually",
+          "meaning": "보통",
+          "example": "Where do you usually hang out?"
+        },
+        {
+          "word": "hair",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Where do you get your hair done?"
+        },
+        {
+          "word": "park",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Where do you park your car?"
+        },
+        {
+          "word": "tonight",
+          "meaning": "오늘 밤",
+          "example": "Where do you want to eat tonight?"
+        },
+        {
+          "word": "usually",
+          "meaning": "보통",
+          "example": "When do you usually wake up?"
+        },
+        {
+          "word": "free",
+          "meaning": "한가한/무료의",
+          "example": "When do you have free time?"
+        },
+        {
+          "word": "married",
+          "meaning": "단어 뜻 확인하기",
+          "example": "When do you plan to get married?"
+        },
+        {
+          "word": "finish",
+          "meaning": "끝내다",
+          "example": "When do you finish your shift?"
+        },
+        {
+          "word": "arrive",
+          "meaning": "도착하다",
+          "example": "When do you want me to arrive?"
+        },
+        {
+          "word": "always",
+          "meaning": "항상",
+          "example": "Why do you always arrive late?"
+        },
+        {
+          "word": "checking",
+          "meaning": "확인하다",
+          "example": "Why do you keep checking your phone?"
+        },
+        {
+          "word": "working",
+          "meaning": "일",
+          "example": "Why do you prefer working alone?"
+        },
+        {
+          "word": "happened",
+          "meaning": "일어나다",
+          "example": "Why do you think that happened?"
+        },
+        {
+          "word": "extremely",
+          "meaning": "극도로",
+          "example": "Why do you look so extremely tired?"
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Day 6 패턴 학습",
+      "patterns": [
+        {
+          "id": 21,
+          "title": "How long does it ~?",
+          "description": "얼마나 걸려요?",
+          "color": "#06b6d4",
+          "examples": [
+            {
+              "english": "How long does it take by subway?",
+              "korean": "지하철로 얼마나 걸려요?"
+            },
+            {
+              "english": "How long does the battery last?",
+              "korean": "배터리 얼마나 가요?"
+            },
+            {
+              "english": "How long does shipping usually take?",
+              "korean": "배송 보통 얼마나 걸려요?"
+            },
+            {
+              "english": "How long does the movie run?",
+              "korean": "영화 얼마나 길어요?"
+            },
+            {
+              "english": "How long does the warranty cover?",
+              "korean": "보증 기간 얼마나 돼요?"
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "title": "How often do you ~?",
+          "description": "얼마나 자주 ~해요?",
+          "color": "#84cc16",
+          "examples": [
+            {
+              "english": "How often do you visit your parents?",
+              "korean": "부모님 얼마나 자주 찾아가요?"
+            },
+            {
+              "english": "How often do you go to the gym?",
+              "korean": "헬스장 얼마나 자주 가요?"
+            },
+            {
+              "english": "How often do you eat out weekly?",
+              "korean": "일주일에 얼마나 자주 외식해요?"
+            },
+            {
+              "english": "How often do you clean your room?",
+              "korean": "방 청소 얼마나 자주 해요?"
+            },
+            {
+              "english": "How often do you check your email?",
+              "korean": "이메일 얼마나 자주 확인해요?"
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "title": "Have you ever ~?",
+          "description": "~해본 적 있어요?",
+          "color": "#f472b6",
+          "examples": [
+            {
+              "english": "Have you ever tried bungee jumping?",
+              "korean": "번지점프 해본 적 있어요?"
+            },
+            {
+              "english": "Have you ever been to Europe?",
+              "korean": "유럽 가본 적 있어요?"
+            },
+            {
+              "english": "Have you ever eaten live octopus?",
+              "korean": "산낙지 먹어본 적 있어요?"
+            },
+            {
+              "english": "Have you ever met someone famous?",
+              "korean": "유명인 만난 적 있어요?"
+            },
+            {
+              "english": "Have you ever lost your wallet?",
+              "korean": "지갑 잃어버린 적 있어요?"
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "title": "Would you like to ~?",
+          "description": "~하실래요?",
+          "color": "#a78bfa",
+          "examples": [
+            {
+              "english": "Would you like to join our team?",
+              "korean": "저희 팀에 합류하실래요?"
+            },
+            {
+              "english": "Would you like to try this sample?",
+              "korean": "이 샘플 드셔보실래요?"
+            },
+            {
+              "english": "Would you like to sit by the window?",
+              "korean": "창가에 앉으실래요?"
+            },
+            {
+              "english": "Would you like to add extra cheese?",
+              "korean": "치즈 추가하실래요?"
+            },
+            {
+              "english": "Would you like to receive updates?",
+              "korean": "업데이트 받으실래요?"
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "subway",
+          "meaning": "지하철",
+          "example": "How long does it take by subway?"
+        },
+        {
+          "word": "battery",
+          "meaning": "배터리",
+          "example": "How long does the battery last?"
+        },
+        {
+          "word": "shipping",
+          "meaning": "단어 뜻 확인하기",
+          "example": "How long does shipping usually take?"
+        },
+        {
+          "word": "movie",
+          "meaning": "영화",
+          "example": "How long does the movie run?"
+        },
+        {
+          "word": "warranty",
+          "meaning": "보증",
+          "example": "How long does the warranty cover?"
+        },
+        {
+          "word": "parents",
+          "meaning": "부모님",
+          "example": "How often do you visit your parents?"
+        },
+        {
+          "word": "often",
+          "meaning": "종종",
+          "example": "How often do you go to the gym?"
+        },
+        {
+          "word": "weekly",
+          "meaning": "매주의",
+          "example": "How often do you eat out weekly?"
+        },
+        {
+          "word": "often",
+          "meaning": "종종",
+          "example": "How often do you clean your room?"
+        },
+        {
+          "word": "often",
+          "meaning": "종종",
+          "example": "How often do you check your email?"
+        },
+        {
+          "word": "jumping",
+          "meaning": "점프",
+          "example": "Have you ever tried bungee jumping?"
+        },
+        {
+          "word": "europe",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Have you ever been to Europe?"
+        },
+        {
+          "word": "octopus",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Have you ever eaten live octopus?"
+        },
+        {
+          "word": "someone",
+          "meaning": "누군가",
+          "example": "Have you ever met someone famous?"
+        },
+        {
+          "word": "wallet",
+          "meaning": "지갑",
+          "example": "Have you ever lost your wallet?"
+        },
+        {
+          "word": "like",
+          "meaning": "좋아하다",
+          "example": "Would you like to join our team?"
+        },
+        {
+          "word": "sample",
+          "meaning": "견본",
+          "example": "Would you like to try this sample?"
+        },
+        {
+          "word": "window",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Would you like to sit by the window?"
+        },
+        {
+          "word": "cheese",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Would you like to add extra cheese?"
+        },
+        {
+          "word": "receive",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Would you like to receive updates?"
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Day 7 패턴 학습",
+      "patterns": [
+        {
+          "id": 25,
+          "title": "I feel like ~",
+          "description": "~하고 싶은 기분이야",
+          "color": "#fb923c",
+          "examples": [
+            {
+              "english": "I feel like eating something sweet.",
+              "korean": "달콤한 거 먹고 싶은 기분이야."
+            },
+            {
+              "english": "I feel like taking a long nap.",
+              "korean": "긴 낮잠 자고 싶은 기분이야."
+            },
+            {
+              "english": "I feel like watching a scary movie.",
+              "korean": "무서운 영화 보고 싶은 기분이야."
+            },
+            {
+              "english": "I feel like going shopping alone.",
+              "korean": "혼자 쇼핑 가고 싶은 기분이야."
+            },
+            {
+              "english": "I feel like calling an old friend.",
+              "korean": "옛 친구한테 전화하고 싶은 기분이야."
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "title": "I'm excited about ~",
+          "description": "~이 기대돼",
+          "color": "#facc15",
+          "examples": [
+            {
+              "english": "I'm excited about the upcoming vacation.",
+              "korean": "다가오는 휴가가 기대돼."
+            },
+            {
+              "english": "I'm excited about trying new things.",
+              "korean": "새로운 것들 해보는 게 기대돼."
+            },
+            {
+              "english": "I'm excited about the job interview.",
+              "korean": "면접이 기대돼."
+            },
+            {
+              "english": "I'm excited about meeting your family.",
+              "korean": "네 가족 만나는 게 기대돼."
+            },
+            {
+              "english": "I'm excited about the concert tonight.",
+              "korean": "오늘 밤 콘서트가 기대돼."
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "title": "I'm worried about ~",
+          "description": "~이 걱정돼",
+          "color": "#64748b",
+          "examples": [
+            {
+              "english": "I'm worried about the difficult exam.",
+              "korean": "어려운 시험이 걱정돼."
+            },
+            {
+              "english": "I'm worried about my financial situation.",
+              "korean": "재정 상황이 걱정돼."
+            },
+            {
+              "english": "I'm worried about the heavy rain.",
+              "korean": "폭우가 걱정돼."
+            },
+            {
+              "english": "I'm worried about my aging parents.",
+              "korean": "나이 드신 부모님이 걱정돼."
+            },
+            {
+              "english": "I'm worried about the tight deadline.",
+              "korean": "빡빡한 마감이 걱정돼."
+            }
+          ]
+        },
+        {
+          "id": 28,
+          "title": "I'm tired of ~",
+          "description": "~에 지쳤어",
+          "color": "#94a3b8",
+          "examples": [
+            {
+              "english": "I'm tired of eating the same food.",
+              "korean": "똑같은 음식 먹는 거 지쳤어."
+            },
+            {
+              "english": "I'm tired of explaining repeatedly.",
+              "korean": "반복해서 설명하는 거 지쳤어."
+            },
+            {
+              "english": "I'm tired of the noisy neighbors.",
+              "korean": "시끄러운 이웃들한테 지쳤어."
+            },
+            {
+              "english": "I'm tired of waking up early daily.",
+              "korean": "매일 일찍 일어나는 거 지쳤어."
+            },
+            {
+              "english": "I'm tired of meaningless meetings.",
+              "korean": "의미 없는 회의들에 지쳤어."
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "something",
+          "meaning": "무언가",
+          "example": "I feel like eating something sweet."
+        },
+        {
+          "word": "taking",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I feel like taking a long nap."
+        },
+        {
+          "word": "watching",
+          "meaning": "지켜하다",
+          "example": "I feel like watching a scary movie."
+        },
+        {
+          "word": "shopping",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I feel like going shopping alone."
+        },
+        {
+          "word": "calling",
+          "meaning": "전화하다",
+          "example": "I feel like calling an old friend."
+        },
+        {
+          "word": "upcoming",
+          "meaning": "다가오는",
+          "example": "I'm excited about the upcoming vacation."
+        },
+        {
+          "word": "excited",
+          "meaning": "신난",
+          "example": "I'm excited about trying new things."
+        },
+        {
+          "word": "interview",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I'm excited about the job interview."
+        },
+        {
+          "word": "excited",
+          "meaning": "신난",
+          "example": "I'm excited about meeting your family."
+        },
+        {
+          "word": "excited",
+          "meaning": "신난",
+          "example": "I'm excited about the concert tonight."
+        },
+        {
+          "word": "difficult",
+          "meaning": "어려운",
+          "example": "I'm worried about the difficult exam."
+        },
+        {
+          "word": "financial",
+          "meaning": "재정의",
+          "example": "I'm worried about my financial situation."
+        },
+        {
+          "word": "worried",
+          "meaning": "걱정하는",
+          "example": "I'm worried about the heavy rain."
+        },
+        {
+          "word": "worried",
+          "meaning": "걱정하는",
+          "example": "I'm worried about my aging parents."
+        },
+        {
+          "word": "deadline",
+          "meaning": "마감일",
+          "example": "I'm worried about the tight deadline."
+        },
+        {
+          "word": "eating",
+          "meaning": "먹다",
+          "example": "I'm tired of eating the same food."
+        },
+        {
+          "word": "explaining",
+          "meaning": "설명하다",
+          "example": "I'm tired of explaining repeatedly."
+        },
+        {
+          "word": "neighbors",
+          "meaning": "이웃",
+          "example": "I'm tired of the noisy neighbors."
+        },
+        {
+          "word": "waking",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I'm tired of waking up early daily."
+        },
+        {
+          "word": "meaningless",
+          "meaning": "의미없는",
+          "example": "I'm tired of meaningless meetings."
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "Day 8 패턴 학습",
+      "patterns": [
+        {
+          "id": 29,
+          "title": "I'm glad that ~",
+          "description": "~해서 기뻐",
+          "color": "#4ade80",
+          "examples": [
+            {
+              "english": "I'm glad that everything worked out.",
+              "korean": "다 잘 돼서 기뻐."
+            },
+            {
+              "english": "I'm glad that you came safely.",
+              "korean": "무사히 와줘서 기뻐."
+            },
+            {
+              "english": "I'm glad that we finally met.",
+              "korean": "드디어 만나서 기뻐."
+            },
+            {
+              "english": "I'm glad that the project succeeded.",
+              "korean": "프로젝트가 성공해서 기뻐."
+            },
+            {
+              "english": "I'm glad that you're feeling better.",
+              "korean": "컨디션 좋아져서 기뻐."
+            }
+          ]
+        },
+        {
+          "id": 30,
+          "title": "I'm sorry for ~",
+          "description": "~해서 미안해",
+          "color": "#f87171",
+          "examples": [
+            {
+              "english": "I'm sorry for the late reply.",
+              "korean": "늦은 답장 미안해."
+            },
+            {
+              "english": "I'm sorry for the silly mistake.",
+              "korean": "어리석은 실수해서 미안해."
+            },
+            {
+              "english": "I'm sorry for causing any trouble.",
+              "korean": "불편 끼쳐서 미안해."
+            },
+            {
+              "english": "I'm sorry for forgetting our anniversary.",
+              "korean": "기념일 잊어서 미안해."
+            },
+            {
+              "english": "I'm sorry for speaking too harshly.",
+              "korean": "너무 거칠게 말해서 미안해."
+            }
+          ]
+        },
+        {
+          "id": 31,
+          "title": "I'm looking forward to ~",
+          "description": "~을 기대하고 있어",
+          "color": "#c084fc",
+          "examples": [
+            {
+              "english": "I'm looking forward to our next trip.",
+              "korean": "다음 여행 기대하고 있어."
+            },
+            {
+              "english": "I'm looking forward to seeing you.",
+              "korean": "널 만나기를 기대하고 있어."
+            },
+            {
+              "english": "I'm looking forward to the long weekend.",
+              "korean": "긴 주말을 기대하고 있어."
+            },
+            {
+              "english": "I'm looking forward to the new season.",
+              "korean": "새 시즌 기대하고 있어."
+            },
+            {
+              "english": "I'm looking forward to your presentation.",
+              "korean": "네 발표를 기대하고 있어."
+            }
+          ]
+        },
+        {
+          "id": 32,
+          "title": "I'm not sure if ~",
+          "description": "~인지 모르겠어",
+          "color": "#818cf8",
+          "examples": [
+            {
+              "english": "I'm not sure if this is correct.",
+              "korean": "이게 맞는지 모르겠어."
+            },
+            {
+              "english": "I'm not sure if I can attend.",
+              "korean": "참석할 수 있을지 모르겠어."
+            },
+            {
+              "english": "I'm not sure if he understood clearly.",
+              "korean": "그가 정확히 이해했는지 모르겠어."
+            },
+            {
+              "english": "I'm not sure if it's worth buying.",
+              "korean": "살 가치가 있는지 모르겠어."
+            },
+            {
+              "english": "I'm not sure if we're going right.",
+              "korean": "우리가 제대로 가는지 모르겠어."
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "everything",
+          "meaning": "모든 것",
+          "example": "I'm glad that everything worked out."
+        },
+        {
+          "word": "safely",
+          "meaning": "안전한",
+          "example": "I'm glad that you came safely."
+        },
+        {
+          "word": "finally",
+          "meaning": "마침내",
+          "example": "I'm glad that we finally met."
+        },
+        {
+          "word": "succeeded",
+          "meaning": "성공하다",
+          "example": "I'm glad that the project succeeded."
+        },
+        {
+          "word": "feeling",
+          "meaning": "느끼다",
+          "example": "I'm glad that you're feeling better."
+        },
+        {
+          "word": "sorry",
+          "meaning": "미안한",
+          "example": "I'm sorry for the late reply."
+        },
+        {
+          "word": "mistake",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I'm sorry for the silly mistake."
+        },
+        {
+          "word": "causing",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I'm sorry for causing any trouble."
+        },
+        {
+          "word": "anniversary",
+          "meaning": "기념일",
+          "example": "I'm sorry for forgetting our anniversary."
+        },
+        {
+          "word": "speaking",
+          "meaning": "말하다",
+          "example": "I'm sorry for speaking too harshly."
+        },
+        {
+          "word": "looking",
+          "meaning": "보다",
+          "example": "I'm looking forward to our next trip."
+        },
+        {
+          "word": "looking",
+          "meaning": "보다",
+          "example": "I'm looking forward to seeing you."
+        },
+        {
+          "word": "looking",
+          "meaning": "보다",
+          "example": "I'm looking forward to the long weekend."
+        },
+        {
+          "word": "looking",
+          "meaning": "보다",
+          "example": "I'm looking forward to the new season."
+        },
+        {
+          "word": "presentation",
+          "meaning": "발표",
+          "example": "I'm looking forward to your presentation."
+        },
+        {
+          "word": "correct",
+          "meaning": "정확한",
+          "example": "I'm not sure if this is correct."
+        },
+        {
+          "word": "attend",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I'm not sure if I can attend."
+        },
+        {
+          "word": "understood",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I'm not sure if he understood clearly."
+        },
+        {
+          "word": "buying",
+          "meaning": "사다",
+          "example": "I'm not sure if it's worth buying."
+        },
+        {
+          "word": "going",
+          "meaning": "가다",
+          "example": "I'm not sure if we're going right."
+        }
+      ]
+    },
+    {
+      "day": 9,
+      "title": "Day 9 패턴 학습",
+      "patterns": [
+        {
+          "id": 33,
+          "title": "Why don't we ~?",
+          "description": "우리 ~하는 게 어때?",
+          "color": "#22d3d8",
+          "examples": [
+            {
+              "english": "Why don't we split the bill?",
+              "korean": "우리 각자 내는 게 어때?"
+            },
+            {
+              "english": "Why don't we try a different approach?",
+              "korean": "다른 방법 시도해보는 게 어때?"
+            },
+            {
+              "english": "Why don't we meet a bit earlier?",
+              "korean": "좀 더 일찍 만나는 게 어때?"
+            },
+            {
+              "english": "Why don't we order pizza tonight?",
+              "korean": "오늘 밤 피자 시키는 게 어때?"
+            },
+            {
+              "english": "Why don't we invite more people?",
+              "korean": "더 많은 사람 초대하는 게 어때?"
+            }
+          ]
+        },
+        {
+          "id": 34,
+          "title": "How about ~?",
+          "description": "~는 어때?",
+          "color": "#fb7185",
+          "examples": [
+            {
+              "english": "How about trying that Italian place?",
+              "korean": "저 이탈리안 식당 가보는 거 어때?"
+            },
+            {
+              "english": "How about next Saturday evening?",
+              "korean": "다음 토요일 저녁은 어때?"
+            },
+            {
+              "english": "How about getting matching shirts?",
+              "korean": "커플 티 사는 거 어때?"
+            },
+            {
+              "english": "How about asking for professional help?",
+              "korean": "전문가 도움 받는 거 어때?"
+            },
+            {
+              "english": "How about taking the scenic route?",
+              "korean": "경치 좋은 길로 가는 거 어때?"
+            }
+          ]
+        },
+        {
+          "id": 35,
+          "title": "Would you mind ~?",
+          "description": "~해도 될까요?",
+          "color": "#a3e635",
+          "examples": [
+            {
+              "english": "Would you mind speaking more slowly?",
+              "korean": "좀 더 천천히 말해주실 수 있을까요?"
+            },
+            {
+              "english": "Would you mind sharing your opinion?",
+              "korean": "의견 공유해주실 수 있을까요?"
+            },
+            {
+              "english": "Would you mind moving your bag?",
+              "korean": "가방 좀 옮겨주실 수 있을까요?"
+            },
+            {
+              "english": "Would you mind waiting outside briefly?",
+              "korean": "잠깐 밖에서 기다려주실 수 있을까요?"
+            },
+            {
+              "english": "Would you mind checking the report?",
+              "korean": "보고서 확인해주실 수 있을까요?"
+            }
+          ]
+        },
+        {
+          "id": 36,
+          "title": "Do you mind if I ~?",
+          "description": "제가 ~해도 될까요?",
+          "color": "#38bdf8",
+          "examples": [
+            {
+              "english": "Do you mind if I record this?",
+              "korean": "이거 녹음해도 될까요?"
+            },
+            {
+              "english": "Do you mind if I bring a friend?",
+              "korean": "친구 데려가도 될까요?"
+            },
+            {
+              "english": "Do you mind if I use your charger?",
+              "korean": "충전기 써도 될까요?"
+            },
+            {
+              "english": "Do you mind if I close the window?",
+              "korean": "창문 닫아도 될까요?"
+            },
+            {
+              "english": "Do you mind if I pay separately?",
+              "korean": "따로 계산해도 될까요?"
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "split",
+          "meaning": "나누다",
+          "example": "Why don't we split the bill?"
+        },
+        {
+          "word": "different",
+          "meaning": "다른",
+          "example": "Why don't we try a different approach?"
+        },
+        {
+          "word": "earlier",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Why don't we meet a bit earlier?"
+        },
+        {
+          "word": "tonight",
+          "meaning": "오늘 밤",
+          "example": "Why don't we order pizza tonight?"
+        },
+        {
+          "word": "invite",
+          "meaning": "초대하다",
+          "example": "Why don't we invite more people?"
+        },
+        {
+          "word": "italian",
+          "meaning": "단어 뜻 확인하기",
+          "example": "How about trying that Italian place?"
+        },
+        {
+          "word": "saturday",
+          "meaning": "단어 뜻 확인하기",
+          "example": "How about next Saturday evening?"
+        },
+        {
+          "word": "matching",
+          "meaning": "단어 뜻 확인하기",
+          "example": "How about getting matching shirts?"
+        },
+        {
+          "word": "professional",
+          "meaning": "단어 뜻 확인하기",
+          "example": "How about asking for professional help?"
+        },
+        {
+          "word": "taking",
+          "meaning": "단어 뜻 확인하기",
+          "example": "How about taking the scenic route?"
+        },
+        {
+          "word": "speaking",
+          "meaning": "말하다",
+          "example": "Would you mind speaking more slowly?"
+        },
+        {
+          "word": "sharing",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Would you mind sharing your opinion?"
+        },
+        {
+          "word": "moving",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Would you mind moving your bag?"
+        },
+        {
+          "word": "waiting",
+          "meaning": "기다리다",
+          "example": "Would you mind waiting outside briefly?"
+        },
+        {
+          "word": "checking",
+          "meaning": "확인하다",
+          "example": "Would you mind checking the report?"
+        },
+        {
+          "word": "record",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Do you mind if I record this?"
+        },
+        {
+          "word": "friend",
+          "meaning": "친구",
+          "example": "Do you mind if I bring a friend?"
+        },
+        {
+          "word": "charger",
+          "meaning": "충전기",
+          "example": "Do you mind if I use your charger?"
+        },
+        {
+          "word": "window",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Do you mind if I close the window?"
+        },
+        {
+          "word": "separately",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Do you mind if I pay separately?"
+        }
+      ]
+    },
+    {
+      "day": 10,
+      "title": "Day 10 패턴 학습",
+      "patterns": [
+        {
+          "id": 37,
+          "title": "I was wondering if ~",
+          "description": "혹시 ~할 수 있을까 해서",
+          "color": "#e879f9",
+          "examples": [
+            {
+              "english": "I was wondering if you're available.",
+              "korean": "혹시 시간 되시나 해서요."
+            },
+            {
+              "english": "I was wondering if you could review.",
+              "korean": "혹시 검토해주실 수 있을까 해서요."
+            },
+            {
+              "english": "I was wondering if this is included.",
+              "korean": "혹시 이게 포함인가 해서요."
+            },
+            {
+              "english": "I was wondering if you knew anyone.",
+              "korean": "혹시 아는 분 있으신가 해서요."
+            },
+            {
+              "english": "I was wondering if I could reschedule.",
+              "korean": "혹시 일정 변경 가능할까 해서요."
+            }
+          ]
+        },
+        {
+          "id": 38,
+          "title": "I'd like to ~",
+          "description": "~하고 싶은데요",
+          "color": "#f472b6",
+          "examples": [
+            {
+              "english": "I'd like to make a formal complaint.",
+              "korean": "정식 불만 접수하고 싶은데요."
+            },
+            {
+              "english": "I'd like to change my current plan.",
+              "korean": "현재 요금제 바꾸고 싶은데요."
+            },
+            {
+              "english": "I'd like to apply for the position.",
+              "korean": "그 자리에 지원하고 싶은데요."
+            },
+            {
+              "english": "I'd like to extend my stay.",
+              "korean": "숙박 연장하고 싶은데요."
+            },
+            {
+              "english": "I'd like to add extra legroom.",
+              "korean": "좌석 간격 넓은 걸로 추가하고 싶은데요."
+            }
+          ]
+        },
+        {
+          "id": 39,
+          "title": "Can you tell me ~?",
+          "description": "~을 알려주실 수 있어요?",
+          "color": "#fbbf24",
+          "examples": [
+            {
+              "english": "Can you tell me the exact location?",
+              "korean": "정확한 위치 알려주실 수 있어요?"
+            },
+            {
+              "english": "Can you tell me why it's delayed?",
+              "korean": "왜 지연됐는지 알려주실 수 있어요?"
+            },
+            {
+              "english": "Can you tell me more specific details?",
+              "korean": "더 구체적으로 알려주실 수 있어요?"
+            },
+            {
+              "english": "Can you tell me how it works?",
+              "korean": "어떻게 작동하는지 알려주실 수 있어요?"
+            },
+            {
+              "english": "Can you tell me the total price?",
+              "korean": "총 가격 알려주실 수 있어요?"
+            }
+          ]
+        },
+        {
+          "id": 40,
+          "title": "I'll ~ for you",
+          "description": "내가 ~해줄게",
+          "color": "#4ade80",
+          "examples": [
+            {
+              "english": "I'll handle everything for you.",
+              "korean": "내가 다 처리해줄게."
+            },
+            {
+              "english": "I'll grab a taxi for you.",
+              "korean": "내가 택시 잡아줄게."
+            },
+            {
+              "english": "I'll translate this for you.",
+              "korean": "내가 번역해줄게."
+            },
+            {
+              "english": "I'll reschedule the meeting for you.",
+              "korean": "내가 회의 일정 조정해줄게."
+            },
+            {
+              "english": "I'll wrap it nicely for you.",
+              "korean": "내가 예쁘게 포장해줄게."
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "wondering",
+          "meaning": "궁금해하다",
+          "example": "I was wondering if you're available."
+        },
+        {
+          "word": "wondering",
+          "meaning": "궁금해하다",
+          "example": "I was wondering if you could review."
+        },
+        {
+          "word": "wondering",
+          "meaning": "궁금해하다",
+          "example": "I was wondering if this is included."
+        },
+        {
+          "word": "wondering",
+          "meaning": "궁금해하다",
+          "example": "I was wondering if you knew anyone."
+        },
+        {
+          "word": "reschedule",
+          "meaning": "일정변경",
+          "example": "I was wondering if I could reschedule."
+        },
+        {
+          "word": "complaint",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I'd like to make a formal complaint."
+        },
+        {
+          "word": "current",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I'd like to change my current plan."
+        },
+        {
+          "word": "position",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I'd like to apply for the position."
+        },
+        {
+          "word": "extend",
+          "meaning": "연장하다",
+          "example": "I'd like to extend my stay."
+        },
+        {
+          "word": "legroom",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I'd like to add extra legroom."
+        },
+        {
+          "word": "location",
+          "meaning": "위치",
+          "example": "Can you tell me the exact location?"
+        },
+        {
+          "word": "delayed",
+          "meaning": "미루다",
+          "example": "Can you tell me why it's delayed?"
+        },
+        {
+          "word": "specific",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Can you tell me more specific details?"
+        },
+        {
+          "word": "works",
+          "meaning": "일",
+          "example": "Can you tell me how it works?"
+        },
+        {
+          "word": "total",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Can you tell me the total price?"
+        },
+        {
+          "word": "everything",
+          "meaning": "모든 것",
+          "example": "I'll handle everything for you."
+        },
+        {
+          "word": "grab",
+          "meaning": "잡다/먹다",
+          "example": "I'll grab a taxi for you."
+        },
+        {
+          "word": "translate",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I'll translate this for you."
+        },
+        {
+          "word": "reschedule",
+          "meaning": "일정변경",
+          "example": "I'll reschedule the meeting for you."
+        },
+        {
+          "word": "nicely",
+          "meaning": "좋은/친절한",
+          "example": "I'll wrap it nicely for you."
+        }
+      ]
+    },
+    {
+      "day": 11,
+      "title": "Day 11 패턴 학습",
+      "patterns": [
+        {
+          "id": 41,
+          "title": "I think ~",
+          "description": "~인 것 같아",
+          "color": "#6366f1",
+          "examples": [
+            {
+              "english": "I think this color looks amazing.",
+              "korean": "이 색상 멋져 보이는 것 같아."
+            },
+            {
+              "english": "I think we need more creative ideas.",
+              "korean": "더 창의적인 아이디어가 필요한 것 같아."
+            },
+            {
+              "english": "I think the price is quite reasonable.",
+              "korean": "가격이 꽤 합리적인 것 같아."
+            },
+            {
+              "english": "I think he's genuinely interested.",
+              "korean": "그가 진심으로 관심 있는 것 같아."
+            },
+            {
+              "english": "I think this restaurant is overrated.",
+              "korean": "이 식당 과대평가된 것 같아."
+            }
+          ]
+        },
+        {
+          "id": 42,
+          "title": "I don't think ~",
+          "description": "~가 아닌 것 같아",
+          "color": "#ec4899",
+          "examples": [
+            {
+              "english": "I don't think that's entirely true.",
+              "korean": "그게 완전히 사실은 아닌 것 같아."
+            },
+            {
+              "english": "I don't think we have enough time.",
+              "korean": "시간이 충분하지 않은 것 같아."
+            },
+            {
+              "english": "I don't think this method works.",
+              "korean": "이 방법은 안 통하는 것 같아."
+            },
+            {
+              "english": "I don't think she's coming today.",
+              "korean": "그녀 오늘 안 올 것 같아."
+            },
+            {
+              "english": "I don't think it really matters.",
+              "korean": "별로 중요하지 않은 것 같아."
+            }
+          ]
+        },
+        {
+          "id": 43,
+          "title": "It seems like ~",
+          "description": "~인 것 같아 보여",
+          "color": "#10b981",
+          "examples": [
+            {
+              "english": "It seems like a complicated situation.",
+              "korean": "복잡한 상황인 것 같아 보여."
+            },
+            {
+              "english": "It seems like everyone's extremely busy.",
+              "korean": "모두 엄청 바쁜 것 같아 보여."
+            },
+            {
+              "english": "It seems like rain is coming soon.",
+              "korean": "곧 비 올 것 같아 보여."
+            },
+            {
+              "english": "It seems like you've grown taller.",
+              "korean": "키 큰 것 같아 보여."
+            },
+            {
+              "english": "It seems like a promising opportunity.",
+              "korean": "유망한 기회인 것 같아 보여."
+            }
+          ]
+        },
+        {
+          "id": 44,
+          "title": "In my opinion ~",
+          "description": "내 생각에는",
+          "color": "#f59e0b",
+          "examples": [
+            {
+              "english": "In my opinion, quality matters most.",
+              "korean": "내 생각에는 품질이 가장 중요해."
+            },
+            {
+              "english": "In my opinion, we should be careful.",
+              "korean": "내 생각에는 조심해야 해."
+            },
+            {
+              "english": "In my opinion, this design is outdated.",
+              "korean": "내 생각에는 이 디자인은 구식이야."
+            },
+            {
+              "english": "In my opinion, he's extremely talented.",
+              "korean": "내 생각에는 그는 엄청 재능있어."
+            },
+            {
+              "english": "In my opinion, timing is everything.",
+              "korean": "내 생각에는 타이밍이 전부야."
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "amazing",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I think this color looks amazing."
+        },
+        {
+          "word": "creative",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I think we need more creative ideas."
+        },
+        {
+          "word": "reasonable",
+          "meaning": "합리적인",
+          "example": "I think the price is quite reasonable."
+        },
+        {
+          "word": "interested",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I think he's genuinely interested."
+        },
+        {
+          "word": "restaurant",
+          "meaning": "식당",
+          "example": "I think this restaurant is overrated."
+        },
+        {
+          "word": "entirely",
+          "meaning": "전적으로",
+          "example": "I don't think that's entirely true."
+        },
+        {
+          "word": "enough",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I don't think we have enough time."
+        },
+        {
+          "word": "method",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I don't think this method works."
+        },
+        {
+          "word": "coming",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I don't think she's coming today."
+        },
+        {
+          "word": "matters",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I don't think it really matters."
+        },
+        {
+          "word": "complicated",
+          "meaning": "복잡한",
+          "example": "It seems like a complicated situation."
+        },
+        {
+          "word": "everyones",
+          "meaning": "모두",
+          "example": "It seems like everyone's extremely busy."
+        },
+        {
+          "word": "coming",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It seems like rain is coming soon."
+        },
+        {
+          "word": "taller",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It seems like you've grown taller."
+        },
+        {
+          "word": "opportunity",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It seems like a promising opportunity."
+        },
+        {
+          "word": "opinion",
+          "meaning": "단어 뜻 확인하기",
+          "example": "In my opinion, quality matters most."
+        },
+        {
+          "word": "opinion",
+          "meaning": "단어 뜻 확인하기",
+          "example": "In my opinion, we should be careful."
+        },
+        {
+          "word": "outdated",
+          "meaning": "구식의",
+          "example": "In my opinion, this design is outdated."
+        },
+        {
+          "word": "extremely",
+          "meaning": "극도로",
+          "example": "In my opinion, he's extremely talented."
+        },
+        {
+          "word": "everything",
+          "meaning": "모든 것",
+          "example": "In my opinion, timing is everything."
+        }
+      ]
+    },
+    {
+      "day": 12,
+      "title": "Day 12 패턴 학습",
+      "patterns": [
+        {
+          "id": 45,
+          "title": "I believe ~",
+          "description": "~라고 믿어",
+          "color": "#8b5cf6",
+          "examples": [
+            {
+              "english": "I believe you can achieve anything.",
+              "korean": "뭐든 이룰 수 있다고 믿어."
+            },
+            {
+              "english": "I believe this is the right decision.",
+              "korean": "이게 올바른 결정이라고 믿어."
+            },
+            {
+              "english": "I believe hard work always pays off.",
+              "korean": "노력은 항상 결실을 맺는다고 믿어."
+            },
+            {
+              "english": "I believe we'll find a better solution.",
+              "korean": "더 나은 해결책을 찾을 거라 믿어."
+            },
+            {
+              "english": "I believe everything happens for a reason.",
+              "korean": "모든 일엔 이유가 있다고 믿어."
+            }
+          ]
+        },
+        {
+          "id": 46,
+          "title": "I agree that ~",
+          "description": "~에 동의해",
+          "color": "#06b6d4",
+          "examples": [
+            {
+              "english": "I agree that communication is essential.",
+              "korean": "소통이 필수적이라는 거에 동의해."
+            },
+            {
+              "english": "I agree that we should start fresh.",
+              "korean": "새로 시작해야 한다는 거에 동의해."
+            },
+            {
+              "english": "I agree that the rules need changing.",
+              "korean": "규칙을 바꿔야 한다는 거에 동의해."
+            },
+            {
+              "english": "I agree that patience is important.",
+              "korean": "인내가 중요하다는 거에 동의해."
+            },
+            {
+              "english": "I agree that this is extremely urgent.",
+              "korean": "이게 매우 급하다는 거에 동의해."
+            }
+          ]
+        },
+        {
+          "id": 47,
+          "title": "I prefer ~",
+          "description": "~가 더 좋아",
+          "color": "#84cc16",
+          "examples": [
+            {
+              "english": "I prefer quiet places for studying.",
+              "korean": "공부할 땐 조용한 곳이 더 좋아."
+            },
+            {
+              "english": "I prefer walking to taking the bus.",
+              "korean": "버스보다 걷는 게 더 좋아."
+            },
+            {
+              "english": "I prefer simple designs to fancy ones.",
+              "korean": "화려한 것보다 심플한 디자인이 더 좋아."
+            },
+            {
+              "english": "I prefer iced coffee even in winter.",
+              "korean": "겨울에도 아이스 커피가 더 좋아."
+            },
+            {
+              "english": "I prefer homemade food to takeout.",
+              "korean": "배달보다 집밥이 더 좋아."
+            }
+          ]
+        },
+        {
+          "id": 48,
+          "title": "I'm sure ~",
+          "description": "~가 확실해",
+          "color": "#ef4444",
+          "examples": [
+            {
+              "english": "I'm sure you'll do an amazing job.",
+              "korean": "멋지게 해낼 거라고 확실해."
+            },
+            {
+              "english": "I'm sure this is the correct address.",
+              "korean": "이게 맞는 주소라고 확실해."
+            },
+            {
+              "english": "I'm sure we've met somewhere before.",
+              "korean": "어디선가 만난 적 있다고 확실해."
+            },
+            {
+              "english": "I'm sure they'll love the surprise.",
+              "korean": "그들이 서프라이즈 좋아할 거라고 확실해."
+            },
+            {
+              "english": "I'm sure everything will work out.",
+              "korean": "다 잘 될 거라고 확실해."
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "anything",
+          "meaning": "무엇이든",
+          "example": "I believe you can achieve anything."
+        },
+        {
+          "word": "decision",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I believe this is the right decision."
+        },
+        {
+          "word": "always",
+          "meaning": "항상",
+          "example": "I believe hard work always pays off."
+        },
+        {
+          "word": "solution",
+          "meaning": "해결책",
+          "example": "I believe we'll find a better solution."
+        },
+        {
+          "word": "everything",
+          "meaning": "모든 것",
+          "example": "I believe everything happens for a reason."
+        },
+        {
+          "word": "communication",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I agree that communication is essential."
+        },
+        {
+          "word": "agree",
+          "meaning": "동의하다",
+          "example": "I agree that we should start fresh."
+        },
+        {
+          "word": "changing",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I agree that the rules need changing."
+        },
+        {
+          "word": "important",
+          "meaning": "중요한",
+          "example": "I agree that patience is important."
+        },
+        {
+          "word": "extremely",
+          "meaning": "극도로",
+          "example": "I agree that this is extremely urgent."
+        },
+        {
+          "word": "studying",
+          "meaning": "공부하다",
+          "example": "I prefer quiet places for studying."
+        },
+        {
+          "word": "walking",
+          "meaning": "걷다",
+          "example": "I prefer walking to taking the bus."
+        },
+        {
+          "word": "designs",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I prefer simple designs to fancy ones."
+        },
+        {
+          "word": "prefer",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I prefer iced coffee even in winter."
+        },
+        {
+          "word": "homemade",
+          "meaning": "수제",
+          "example": "I prefer homemade food to takeout."
+        },
+        {
+          "word": "amazing",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I'm sure you'll do an amazing job."
+        },
+        {
+          "word": "correct",
+          "meaning": "정확한",
+          "example": "I'm sure this is the correct address."
+        },
+        {
+          "word": "somewhere",
+          "meaning": "어딘가",
+          "example": "I'm sure we've met somewhere before."
+        },
+        {
+          "word": "surprise",
+          "meaning": "놀라게 하다",
+          "example": "I'm sure they'll love the surprise."
+        },
+        {
+          "word": "everything",
+          "meaning": "모든 것",
+          "example": "I'm sure everything will work out."
+        }
+      ]
+    },
+    {
+      "day": 13,
+      "title": "Day 13 패턴 학습",
+      "patterns": [
+        {
+          "id": 49,
+          "title": "It's time to ~",
+          "description": "~할 시간이야",
+          "color": "#f472b6",
+          "examples": [
+            {
+              "english": "It's time to make a bold decision.",
+              "korean": "과감한 결정을 내릴 시간이야."
+            },
+            {
+              "english": "It's time to say a proper goodbye.",
+              "korean": "제대로 된 작별인사 할 시간이야."
+            },
+            {
+              "english": "It's time to focus on self-improvement.",
+              "korean": "자기 계발에 집중할 시간이야."
+            },
+            {
+              "english": "It's time to face the harsh reality.",
+              "korean": "가혹한 현실을 받아들일 시간이야."
+            },
+            {
+              "english": "It's time to celebrate our success.",
+              "korean": "우리의 성공을 축하할 시간이야."
+            }
+          ]
+        },
+        {
+          "id": 50,
+          "title": "I've been ~ing",
+          "description": "계속 ~하고 있었어",
+          "color": "#a78bfa",
+          "examples": [
+            {
+              "english": "I've been working on a secret project.",
+              "korean": "비밀 프로젝트 작업하고 있었어."
+            },
+            {
+              "english": "I've been practicing my pronunciation.",
+              "korean": "발음 연습하고 있었어."
+            },
+            {
+              "english": "I've been searching for a reliable mechanic.",
+              "korean": "믿을 만한 정비사 찾고 있었어."
+            },
+            {
+              "english": "I've been feeling unusually tired lately.",
+              "korean": "요즘 유난히 피곤했어."
+            },
+            {
+              "english": "I've been saving up for a new laptop.",
+              "korean": "새 노트북 사려고 돈 모으고 있었어."
+            }
+          ]
+        },
+        {
+          "id": 51,
+          "title": "I just ~",
+          "description": "방금 ~했어",
+          "color": "#34d399",
+          "examples": [
+            {
+              "english": "I just received some exciting news.",
+              "korean": "방금 신나는 소식 받았어."
+            },
+            {
+              "english": "I just spotted a beautiful rainbow.",
+              "korean": "방금 예쁜 무지개 봤어."
+            },
+            {
+              "english": "I just realized I forgot my umbrella.",
+              "korean": "방금 우산 깜빡한 걸 알았어."
+            },
+            {
+              "english": "I just finished a challenging project.",
+              "korean": "방금 어려운 프로젝트 끝냈어."
+            },
+            {
+              "english": "I just heard an interesting rumor.",
+              "korean": "방금 흥미로운 소문 들었어."
+            }
+          ]
+        },
+        {
+          "id": 52,
+          "title": "I'm about to ~",
+          "description": "막 ~하려던 참이야",
+          "color": "#fbbf24",
+          "examples": [
+            {
+              "english": "I'm about to order some spicy food.",
+              "korean": "막 매운 음식 시키려던 참이야."
+            },
+            {
+              "english": "I'm about to watch an exciting movie.",
+              "korean": "막 재밌는 영화 보려던 참이야."
+            },
+            {
+              "english": "I'm about to send an important email.",
+              "korean": "막 중요한 이메일 보내려던 참이야."
+            },
+            {
+              "english": "I'm about to take a refreshing shower.",
+              "korean": "막 상쾌하게 샤워하려던 참이야."
+            },
+            {
+              "english": "I'm about to try something completely new.",
+              "korean": "막 완전히 새로운 거 해보려던 참이야."
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "decision",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It's time to make a bold decision."
+        },
+        {
+          "word": "goodbye",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It's time to say a proper goodbye."
+        },
+        {
+          "word": "selfimprovement",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It's time to focus on self-improvement."
+        },
+        {
+          "word": "reality",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It's time to face the harsh reality."
+        },
+        {
+          "word": "celebrate",
+          "meaning": "축하하다",
+          "example": "It's time to celebrate our success."
+        },
+        {
+          "word": "working",
+          "meaning": "일",
+          "example": "I've been working on a secret project."
+        },
+        {
+          "word": "pronunciation",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I've been practicing my pronunciation."
+        },
+        {
+          "word": "searching",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I've been searching for a reliable mechanic."
+        },
+        {
+          "word": "unusually",
+          "meaning": "유난히",
+          "example": "I've been feeling unusually tired lately."
+        },
+        {
+          "word": "saving",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I've been saving up for a new laptop."
+        },
+        {
+          "word": "received",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I just received some exciting news."
+        },
+        {
+          "word": "beautiful",
+          "meaning": "아름다운",
+          "example": "I just spotted a beautiful rainbow."
+        },
+        {
+          "word": "realized",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I just realized I forgot my umbrella."
+        },
+        {
+          "word": "challenging",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I just finished a challenging project."
+        },
+        {
+          "word": "interesting",
+          "meaning": "흥미로운",
+          "example": "I just heard an interesting rumor."
+        },
+        {
+          "word": "about",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I'm about to order some spicy food."
+        },
+        {
+          "word": "exciting",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I'm about to watch an exciting movie."
+        },
+        {
+          "word": "important",
+          "meaning": "중요한",
+          "example": "I'm about to send an important email."
+        },
+        {
+          "word": "refreshing",
+          "meaning": "상쾌한",
+          "example": "I'm about to take a refreshing shower."
+        },
+        {
+          "word": "completely",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I'm about to try something completely new."
+        }
+      ]
+    },
+    {
+      "day": 14,
+      "title": "Day 14 패턴 학습",
+      "patterns": [
+        {
+          "id": 53,
+          "title": "I haven't ~ yet",
+          "description": "아직 ~안 했어",
+          "color": "#60a5fa",
+          "examples": [
+            {
+              "english": "I haven't made a final decision yet.",
+              "korean": "아직 최종 결정 안 했어."
+            },
+            {
+              "english": "I haven't tried the famous restaurant yet.",
+              "korean": "아직 유명한 식당 안 가봤어."
+            },
+            {
+              "english": "I haven't received any official response yet.",
+              "korean": "아직 공식 답변 못 받았어."
+            },
+            {
+              "english": "I haven't figured out the complex problem yet.",
+              "korean": "아직 복잡한 문제 못 풀었어."
+            },
+            {
+              "english": "I haven't packed my heavy suitcase yet.",
+              "korean": "아직 무거운 캐리어 안 쌌어."
+            }
+          ]
+        },
+        {
+          "id": 54,
+          "title": "I already ~",
+          "description": "이미 ~했어",
+          "color": "#c084fc",
+          "examples": [
+            {
+              "english": "I already submitted the revised report.",
+              "korean": "이미 수정된 보고서 제출했어."
+            },
+            {
+              "english": "I already made a backup copy.",
+              "korean": "이미 백업 복사본 만들었어."
+            },
+            {
+              "english": "I already apologized for my behavior.",
+              "korean": "이미 내 행동에 사과했어."
+            },
+            {
+              "english": "I already booked a comfortable hotel.",
+              "korean": "이미 편안한 호텔 예약했어."
+            },
+            {
+              "english": "I already explained the entire situation.",
+              "korean": "이미 상황 전체 설명했어."
+            }
+          ]
+        },
+        {
+          "id": 55,
+          "title": "It took me ~ to",
+          "description": "~하는 데 ...걸렸어",
+          "color": "#2dd4bf",
+          "examples": [
+            {
+              "english": "It took me forever to find parking.",
+              "korean": "주차 찾는 데 한참 걸렸어."
+            },
+            {
+              "english": "It took me a while to fully understand.",
+              "korean": "완전히 이해하는 데 좀 걸렸어."
+            },
+            {
+              "english": "It took me several attempts to succeed.",
+              "korean": "성공하는 데 여러 번 시도 걸렸어."
+            },
+            {
+              "english": "It took me hours to clean everything.",
+              "korean": "다 청소하는 데 몇 시간 걸렸어."
+            },
+            {
+              "english": "It took me courage to finally ask.",
+              "korean": "드디어 물어보는 데 용기가 필요했어."
+            }
+          ]
+        },
+        {
+          "id": 56,
+          "title": "As soon as ~",
+          "description": "~하자마자",
+          "color": "#f97316",
+          "examples": [
+            {
+              "english": "As soon as I arrived, I felt relieved.",
+              "korean": "도착하자마자 안도했어."
+            },
+            {
+              "english": "As soon as I heard, I rushed over.",
+              "korean": "듣자마자 달려갔어."
+            },
+            {
+              "english": "As soon as it opens, I'll be there.",
+              "korean": "문 열자마자 갈 거야."
+            },
+            {
+              "english": "As soon as I get paid, I'll treat you.",
+              "korean": "월급 받자마자 내가 쏠게."
+            },
+            {
+              "english": "As soon as the rain stops, let's leave.",
+              "korean": "비 그치자마자 출발하자."
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "decision",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I haven't made a final decision yet."
+        },
+        {
+          "word": "restaurant",
+          "meaning": "식당",
+          "example": "I haven't tried the famous restaurant yet."
+        },
+        {
+          "word": "received",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I haven't received any official response yet."
+        },
+        {
+          "word": "figured",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I haven't figured out the complex problem yet."
+        },
+        {
+          "word": "suitcase",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I haven't packed my heavy suitcase yet."
+        },
+        {
+          "word": "submitted",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I already submitted the revised report."
+        },
+        {
+          "word": "already",
+          "meaning": "이미",
+          "example": "I already made a backup copy."
+        },
+        {
+          "word": "apologized",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I already apologized for my behavior."
+        },
+        {
+          "word": "comfortable",
+          "meaning": "편안한",
+          "example": "I already booked a comfortable hotel."
+        },
+        {
+          "word": "explained",
+          "meaning": "설명하다",
+          "example": "I already explained the entire situation."
+        },
+        {
+          "word": "forever",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It took me forever to find parking."
+        },
+        {
+          "word": "fully",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It took me a while to fully understand."
+        },
+        {
+          "word": "attempts",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It took me several attempts to succeed."
+        },
+        {
+          "word": "everything",
+          "meaning": "모든 것",
+          "example": "It took me hours to clean everything."
+        },
+        {
+          "word": "courage",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It took me courage to finally ask."
+        },
+        {
+          "word": "relieved",
+          "meaning": "단어 뜻 확인하기",
+          "example": "As soon as I arrived, I felt relieved."
+        },
+        {
+          "word": "rushed",
+          "meaning": "돌진하다",
+          "example": "As soon as I heard, I rushed over."
+        },
+        {
+          "word": "opens",
+          "meaning": "열다",
+          "example": "As soon as it opens, I'll be there."
+        },
+        {
+          "word": "treat",
+          "meaning": "단어 뜻 확인하기",
+          "example": "As soon as I get paid, I'll treat you."
+        },
+        {
+          "word": "stops",
+          "meaning": "멈추다",
+          "example": "As soon as the rain stops, let's leave."
+        }
+      ]
+    },
+    {
+      "day": 15,
+      "title": "Day 15 패턴 학습",
+      "patterns": [
+        {
+          "id": 57,
+          "title": "It's better to ~",
+          "description": "~하는 게 더 나아",
+          "color": "#14b8a6",
+          "examples": [
+            {
+              "english": "It's better to be honest than silent.",
+              "korean": "침묵보다 솔직한 게 더 나아."
+            },
+            {
+              "english": "It's better to prepare in advance.",
+              "korean": "미리 준비하는 게 더 나아."
+            },
+            {
+              "english": "It's better to travel light anyway.",
+              "korean": "어차피 가볍게 여행하는 게 더 나아."
+            },
+            {
+              "english": "It's better to apologize sincerely first.",
+              "korean": "먼저 진심으로 사과하는 게 더 나아."
+            },
+            {
+              "english": "It's better to double-check important details.",
+              "korean": "중요한 세부사항 재확인하는 게 더 나아."
+            }
+          ]
+        },
+        {
+          "id": 58,
+          "title": "It's easier to ~",
+          "description": "~하는 게 더 쉬워",
+          "color": "#8b5cf6",
+          "examples": [
+            {
+              "english": "It's easier to learn through practice.",
+              "korean": "연습으로 배우는 게 더 쉬워."
+            },
+            {
+              "english": "It's easier to cook simple meals.",
+              "korean": "간단한 요리 만드는 게 더 쉬워."
+            },
+            {
+              "english": "It's easier to work in a quiet space.",
+              "korean": "조용한 공간에서 일하는 게 더 쉬워."
+            },
+            {
+              "english": "It's easier to remember visual things.",
+              "korean": "시각적인 것들 기억하는 게 더 쉬워."
+            },
+            {
+              "english": "It's easier to focus in the morning.",
+              "korean": "아침에 집중하는 게 더 쉬워."
+            }
+          ]
+        },
+        {
+          "id": 59,
+          "title": "It's harder to ~",
+          "description": "~하는 게 더 어려워",
+          "color": "#ec4899",
+          "examples": [
+            {
+              "english": "It's harder to maintain good habits.",
+              "korean": "좋은 습관 유지하는 게 더 어려워."
+            },
+            {
+              "english": "It's harder to forget painful memories.",
+              "korean": "아픈 기억 잊는 게 더 어려워."
+            },
+            {
+              "english": "It's harder to work without motivation.",
+              "korean": "동기 없이 일하는 게 더 어려워."
+            },
+            {
+              "english": "It's harder to rebuild broken trust.",
+              "korean": "깨진 신뢰 다시 쌓는 게 더 어려워."
+            },
+            {
+              "english": "It's harder to admit serious mistakes.",
+              "korean": "심각한 실수 인정하는 게 더 어려워."
+            }
+          ]
+        },
+        {
+          "id": 60,
+          "title": "The more ~, the more ~",
+          "description": "~할수록 더 ~해",
+          "color": "#06b6d4",
+          "examples": [
+            {
+              "english": "The more you practice, the better you get.",
+              "korean": "연습할수록 더 잘해져."
+            },
+            {
+              "english": "The more I know, the more curious I become.",
+              "korean": "알수록 더 궁금해져."
+            },
+            {
+              "english": "The more expensive, the higher quality.",
+              "korean": "비쌀수록 품질이 더 좋아."
+            },
+            {
+              "english": "The more stressed, the worse I sleep.",
+              "korean": "스트레스 받을수록 잠을 더 못 자."
+            },
+            {
+              "english": "The more honest, the more people trust you.",
+              "korean": "솔직할수록 사람들이 더 믿어."
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "better",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It's better to be honest than silent."
+        },
+        {
+          "word": "prepare",
+          "meaning": "준비하다",
+          "example": "It's better to prepare in advance."
+        },
+        {
+          "word": "better",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It's better to travel light anyway."
+        },
+        {
+          "word": "apologize",
+          "meaning": "사과하다",
+          "example": "It's better to apologize sincerely first."
+        },
+        {
+          "word": "doublecheck",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It's better to double-check important details."
+        },
+        {
+          "word": "practice",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It's easier to learn through practice."
+        },
+        {
+          "word": "easier",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It's easier to cook simple meals."
+        },
+        {
+          "word": "easier",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It's easier to work in a quiet space."
+        },
+        {
+          "word": "easier",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It's easier to remember visual things."
+        },
+        {
+          "word": "morning",
+          "meaning": "아침",
+          "example": "It's easier to focus in the morning."
+        },
+        {
+          "word": "maintain",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It's harder to maintain good habits."
+        },
+        {
+          "word": "memories",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It's harder to forget painful memories."
+        },
+        {
+          "word": "motivation",
+          "meaning": "동기부여",
+          "example": "It's harder to work without motivation."
+        },
+        {
+          "word": "rebuild",
+          "meaning": "재건하다",
+          "example": "It's harder to rebuild broken trust."
+        },
+        {
+          "word": "mistakes",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It's harder to admit serious mistakes."
+        },
+        {
+          "word": "practice",
+          "meaning": "단어 뜻 확인하기",
+          "example": "The more you practice, the better you get."
+        },
+        {
+          "word": "curious",
+          "meaning": "단어 뜻 확인하기",
+          "example": "The more I know, the more curious I become."
+        },
+        {
+          "word": "expensive",
+          "meaning": "비싼",
+          "example": "The more expensive, the higher quality."
+        },
+        {
+          "word": "stressed",
+          "meaning": "스트레스",
+          "example": "The more stressed, the worse I sleep."
+        },
+        {
+          "word": "honest",
+          "meaning": "정직한",
+          "example": "The more honest, the more people trust you."
+        }
+      ]
+    },
+    {
+      "day": 16,
+      "title": "Day 16 패턴 학습",
+      "patterns": [
+        {
+          "id": 61,
+          "title": "It's different from ~",
+          "description": "~와 달라",
+          "color": "#84cc16",
+          "examples": [
+            {
+              "english": "It's different from my original expectation.",
+              "korean": "처음 예상과 달라."
+            },
+            {
+              "english": "It's different from the online pictures.",
+              "korean": "온라인 사진이랑 달라."
+            },
+            {
+              "english": "It's different from what I was taught.",
+              "korean": "배웠던 것과 달라."
+            },
+            {
+              "english": "It's different from the previous version.",
+              "korean": "이전 버전과 달라."
+            },
+            {
+              "english": "It's different from Korean traditional culture.",
+              "korean": "한국 전통 문화와 달라."
+            }
+          ]
+        },
+        {
+          "id": 62,
+          "title": "It's similar to ~",
+          "description": "~와 비슷해",
+          "color": "#f472b6",
+          "examples": [
+            {
+              "english": "It's similar to my younger sister's style.",
+              "korean": "여동생 스타일과 비슷해."
+            },
+            {
+              "english": "It's similar to the Italian original dish.",
+              "korean": "이탈리아 원조 요리와 비슷해."
+            },
+            {
+              "english": "It's similar to what happened last time.",
+              "korean": "저번에 있었던 일과 비슷해."
+            },
+            {
+              "english": "It's similar to a childhood memory.",
+              "korean": "어린 시절 기억과 비슷해."
+            },
+            {
+              "english": "It's similar to my mother's cooking.",
+              "korean": "엄마 요리와 비슷해."
+            }
+          ]
+        },
+        {
+          "id": 63,
+          "title": "It's the same as ~",
+          "description": "~와 같아",
+          "color": "#a78bfa",
+          "examples": [
+            {
+              "english": "It's the same as the original recipe.",
+              "korean": "원조 레시피와 같아."
+            },
+            {
+              "english": "It's the same as my honest opinion.",
+              "korean": "내 솔직한 의견과 같아."
+            },
+            {
+              "english": "It's the same as the official announcement.",
+              "korean": "공식 발표와 같아."
+            },
+            {
+              "english": "It's the same as our shared goal.",
+              "korean": "우리 공동 목표와 같아."
+            },
+            {
+              "english": "It's the same as what I was thinking.",
+              "korean": "내가 생각한 것과 같아."
+            }
+          ]
+        },
+        {
+          "id": 64,
+          "title": "Not as ~ as",
+          "description": "~만큼 ~하지 않아",
+          "color": "#fb923c",
+          "examples": [
+            {
+              "english": "It's not as crowded as the main street.",
+              "korean": "대로만큼 붐비지 않아."
+            },
+            {
+              "english": "It's not as simple as it looks.",
+              "korean": "보이는 것만큼 간단하지 않아."
+            },
+            {
+              "english": "It's not as spicy as authentic Korean food.",
+              "korean": "정통 한식만큼 맵지 않아."
+            },
+            {
+              "english": "It's not as comfortable as my old chair.",
+              "korean": "예전 의자만큼 편하지 않아."
+            },
+            {
+              "english": "It's not as expensive as I expected.",
+              "korean": "예상만큼 비싸지 않아."
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "expectation",
+          "meaning": "기대",
+          "example": "It's different from my original expectation."
+        },
+        {
+          "word": "different",
+          "meaning": "다른",
+          "example": "It's different from the online pictures."
+        },
+        {
+          "word": "different",
+          "meaning": "다른",
+          "example": "It's different from what I was taught."
+        },
+        {
+          "word": "different",
+          "meaning": "다른",
+          "example": "It's different from the previous version."
+        },
+        {
+          "word": "traditional",
+          "meaning": "전통적인",
+          "example": "It's different from Korean traditional culture."
+        },
+        {
+          "word": "similar",
+          "meaning": "비슷한",
+          "example": "It's similar to my younger sister's style."
+        },
+        {
+          "word": "original",
+          "meaning": "원래의",
+          "example": "It's similar to the Italian original dish."
+        },
+        {
+          "word": "happened",
+          "meaning": "일어나다",
+          "example": "It's similar to what happened last time."
+        },
+        {
+          "word": "childhood",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It's similar to a childhood memory."
+        },
+        {
+          "word": "similar",
+          "meaning": "비슷한",
+          "example": "It's similar to my mother's cooking."
+        },
+        {
+          "word": "original",
+          "meaning": "원래의",
+          "example": "It's the same as the original recipe."
+        },
+        {
+          "word": "opinion",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It's the same as my honest opinion."
+        },
+        {
+          "word": "announcement",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It's the same as the official announcement."
+        },
+        {
+          "word": "shared",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It's the same as our shared goal."
+        },
+        {
+          "word": "thinking",
+          "meaning": "생각하다",
+          "example": "It's the same as what I was thinking."
+        },
+        {
+          "word": "crowded",
+          "meaning": "붐비는",
+          "example": "It's not as crowded as the main street."
+        },
+        {
+          "word": "simple",
+          "meaning": "단순한",
+          "example": "It's not as simple as it looks."
+        },
+        {
+          "word": "authentic",
+          "meaning": "진정한",
+          "example": "It's not as spicy as authentic Korean food."
+        },
+        {
+          "word": "comfortable",
+          "meaning": "편안한",
+          "example": "It's not as comfortable as my old chair."
+        },
+        {
+          "word": "expensive",
+          "meaning": "비싼",
+          "example": "It's not as expensive as I expected."
+        }
+      ]
+    },
+    {
+      "day": 17,
+      "title": "Day 17 패턴 학습",
+      "patterns": [
+        {
+          "id": 65,
+          "title": "I usually ~",
+          "description": "보통 ~해",
+          "color": "#facc15",
+          "examples": [
+            {
+              "english": "I usually drink black coffee first thing.",
+              "korean": "보통 제일 먼저 블랙커피 마셔."
+            },
+            {
+              "english": "I usually check my schedule carefully.",
+              "korean": "보통 일정 꼼꼼히 확인해."
+            },
+            {
+              "english": "I usually avoid crowded public places.",
+              "korean": "보통 붐비는 공공장소 피해."
+            },
+            {
+              "english": "I usually cook healthy meals at home.",
+              "korean": "보통 집에서 건강한 식사 해."
+            },
+            {
+              "english": "I usually respond to emails quickly.",
+              "korean": "보통 이메일에 빨리 답해."
+            }
+          ]
+        },
+        {
+          "id": 66,
+          "title": "I always ~",
+          "description": "항상 ~해",
+          "color": "#4ade80",
+          "examples": [
+            {
+              "english": "I always keep my important promises.",
+              "korean": "항상 중요한 약속 지켜."
+            },
+            {
+              "english": "I always carry a portable charger.",
+              "korean": "항상 보조배터리 들고 다녀."
+            },
+            {
+              "english": "I always double-check the locked door.",
+              "korean": "항상 잠긴 문 두 번 확인해."
+            },
+            {
+              "english": "I always appreciate honest feedback.",
+              "korean": "항상 솔직한 피드백 감사해해."
+            },
+            {
+              "english": "I always arrive at meetings early.",
+              "korean": "항상 미팅에 일찍 도착해."
+            }
+          ]
+        },
+        {
+          "id": 67,
+          "title": "I never ~",
+          "description": "절대 ~안 해",
+          "color": "#f87171",
+          "examples": [
+            {
+              "english": "I never share my personal password.",
+              "korean": "절대 개인 비밀번호 안 알려줘."
+            },
+            {
+              "english": "I never skip my morning workout.",
+              "korean": "절대 아침 운동 안 빠뜨려."
+            },
+            {
+              "english": "I never eat extremely spicy food.",
+              "korean": "절대 극도로 매운 음식 안 먹어."
+            },
+            {
+              "english": "I never make important decisions hastily.",
+              "korean": "절대 중요한 결정 급하게 안 해."
+            },
+            {
+              "english": "I never forget meaningful birthdays.",
+              "korean": "절대 의미 있는 생일 안 잊어."
+            }
+          ]
+        },
+        {
+          "id": 68,
+          "title": "I sometimes ~",
+          "description": "가끔 ~해",
+          "color": "#c084fc",
+          "examples": [
+            {
+              "english": "I sometimes treat myself to fancy dinner.",
+              "korean": "가끔 고급 저녁으로 자신에게 선물해."
+            },
+            {
+              "english": "I sometimes work from a cozy cafe.",
+              "korean": "가끔 아늑한 카페에서 일해."
+            },
+            {
+              "english": "I sometimes binge-watch interesting series.",
+              "korean": "가끔 재밌는 시리즈 몰아봐."
+            },
+            {
+              "english": "I sometimes take spontaneous short trips.",
+              "korean": "가끔 즉흥적인 짧은 여행 가."
+            },
+            {
+              "english": "I sometimes wake up unusually early.",
+              "korean": "가끔 유난히 일찍 일어나."
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "usually",
+          "meaning": "보통",
+          "example": "I usually drink black coffee first thing."
+        },
+        {
+          "word": "carefully",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I usually check my schedule carefully."
+        },
+        {
+          "word": "usually",
+          "meaning": "보통",
+          "example": "I usually avoid crowded public places."
+        },
+        {
+          "word": "usually",
+          "meaning": "보통",
+          "example": "I usually cook healthy meals at home."
+        },
+        {
+          "word": "usually",
+          "meaning": "보통",
+          "example": "I usually respond to emails quickly."
+        },
+        {
+          "word": "important",
+          "meaning": "중요한",
+          "example": "I always keep my important promises."
+        },
+        {
+          "word": "portable",
+          "meaning": "휴대용",
+          "example": "I always carry a portable charger."
+        },
+        {
+          "word": "doublecheck",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I always double-check the locked door."
+        },
+        {
+          "word": "appreciate",
+          "meaning": "감사하다",
+          "example": "I always appreciate honest feedback."
+        },
+        {
+          "word": "meetings",
+          "meaning": "회의",
+          "example": "I always arrive at meetings early."
+        },
+        {
+          "word": "personal",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I never share my personal password."
+        },
+        {
+          "word": "morning",
+          "meaning": "아침",
+          "example": "I never skip my morning workout."
+        },
+        {
+          "word": "extremely",
+          "meaning": "극도로",
+          "example": "I never eat extremely spicy food."
+        },
+        {
+          "word": "important",
+          "meaning": "중요한",
+          "example": "I never make important decisions hastily."
+        },
+        {
+          "word": "meaningful",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I never forget meaningful birthdays."
+        },
+        {
+          "word": "sometimes",
+          "meaning": "가끔",
+          "example": "I sometimes treat myself to fancy dinner."
+        },
+        {
+          "word": "sometimes",
+          "meaning": "가끔",
+          "example": "I sometimes work from a cozy cafe."
+        },
+        {
+          "word": "interesting",
+          "meaning": "흥미로운",
+          "example": "I sometimes binge-watch interesting series."
+        },
+        {
+          "word": "spontaneous",
+          "meaning": "즉흥적인",
+          "example": "I sometimes take spontaneous short trips."
+        },
+        {
+          "word": "sometimes",
+          "meaning": "가끔",
+          "example": "I sometimes wake up unusually early."
+        }
+      ]
+    },
+    {
+      "day": 18,
+      "title": "Day 18 패턴 학습",
+      "patterns": [
+        {
+          "id": 69,
+          "title": "I tend to ~",
+          "description": "~하는 경향이 있어",
+          "color": "#818cf8",
+          "examples": [
+            {
+              "english": "I tend to overanalyze simple situations.",
+              "korean": "간단한 상황 과하게 분석하는 경향이 있어."
+            },
+            {
+              "english": "I tend to procrastinate on boring tasks.",
+              "korean": "지루한 일 미루는 경향이 있어."
+            },
+            {
+              "english": "I tend to prefer familiar comfortable places.",
+              "korean": "익숙하고 편한 곳 선호하는 경향이 있어."
+            },
+            {
+              "english": "I tend to speak too quickly sometimes.",
+              "korean": "가끔 너무 빨리 말하는 경향이 있어."
+            },
+            {
+              "english": "I tend to worry about unnecessary things.",
+              "korean": "불필요한 것들 걱정하는 경향이 있어."
+            }
+          ]
+        },
+        {
+          "id": 70,
+          "title": "I keep ~ing",
+          "description": "자꾸 ~해",
+          "color": "#22d3d8",
+          "examples": [
+            {
+              "english": "I keep forgetting important appointments.",
+              "korean": "자꾸 중요한 약속 까먹어."
+            },
+            {
+              "english": "I keep making the same stupid mistake.",
+              "korean": "자꾸 똑같은 바보같은 실수해."
+            },
+            {
+              "english": "I keep checking my phone unconsciously.",
+              "korean": "자꾸 무의식적으로 폰 확인해."
+            },
+            {
+              "english": "I keep thinking about yesterday's awkward moment.",
+              "korean": "자꾸 어제 어색했던 순간 생각나."
+            },
+            {
+              "english": "I keep buying unnecessary cute things.",
+              "korean": "자꾸 불필요한 귀여운 것들 사."
+            }
+          ]
+        },
+        {
+          "id": 71,
+          "title": "I ended up ~ing",
+          "description": "결국 ~하게 됐어",
+          "color": "#fb7185",
+          "examples": [
+            {
+              "english": "I ended up staying much longer.",
+              "korean": "결국 훨씬 오래 있게 됐어."
+            },
+            {
+              "english": "I ended up buying three expensive items.",
+              "korean": "결국 비싼 것 세 개 사게 됐어."
+            },
+            {
+              "english": "I ended up apologizing first anyway.",
+              "korean": "결국 어쨌든 내가 먼저 사과하게 됐어."
+            },
+            {
+              "english": "I ended up watching the entire boring series.",
+              "korean": "결국 지루한 시리즈 전부 보게 됐어."
+            },
+            {
+              "english": "I ended up loving the unexpected result.",
+              "korean": "결국 예상 못한 결과 좋아하게 됐어."
+            }
+          ]
+        },
+        {
+          "id": 72,
+          "title": "I stopped ~ing",
+          "description": "~하는 거 그만뒀어",
+          "color": "#a3e635",
+          "examples": [
+            {
+              "english": "I stopped drinking sugary beverages.",
+              "korean": "단 음료 마시는 거 그만뒀어."
+            },
+            {
+              "english": "I stopped arguing about pointless things.",
+              "korean": "의미 없는 것들로 다투는 거 그만뒀어."
+            },
+            {
+              "english": "I stopped using unnecessary plastic bags.",
+              "korean": "불필요한 비닐봉지 쓰는 거 그만뒀어."
+            },
+            {
+              "english": "I stopped comparing myself to others.",
+              "korean": "다른 사람들과 비교하는 거 그만뒀어."
+            },
+            {
+              "english": "I stopped checking social media constantly.",
+              "korean": "수시로 SNS 확인하는 거 그만뒀어."
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "overanalyze",
+          "meaning": "과잉분석",
+          "example": "I tend to overanalyze simple situations."
+        },
+        {
+          "word": "procrastinate",
+          "meaning": "미루다",
+          "example": "I tend to procrastinate on boring tasks."
+        },
+        {
+          "word": "comfortable",
+          "meaning": "편안한",
+          "example": "I tend to prefer familiar comfortable places."
+        },
+        {
+          "word": "sometimes",
+          "meaning": "가끔",
+          "example": "I tend to speak too quickly sometimes."
+        },
+        {
+          "word": "unnecessary",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I tend to worry about unnecessary things."
+        },
+        {
+          "word": "appointments",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I keep forgetting important appointments."
+        },
+        {
+          "word": "mistake",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I keep making the same stupid mistake."
+        },
+        {
+          "word": "unconsciously",
+          "meaning": "무의식적으로",
+          "example": "I keep checking my phone unconsciously."
+        },
+        {
+          "word": "yesterdays",
+          "meaning": "어제",
+          "example": "I keep thinking about yesterday's awkward moment."
+        },
+        {
+          "word": "unnecessary",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I keep buying unnecessary cute things."
+        },
+        {
+          "word": "staying",
+          "meaning": "머무르다",
+          "example": "I ended up staying much longer."
+        },
+        {
+          "word": "expensive",
+          "meaning": "비싼",
+          "example": "I ended up buying three expensive items."
+        },
+        {
+          "word": "apologizing",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I ended up apologizing first anyway."
+        },
+        {
+          "word": "watching",
+          "meaning": "지켜하다",
+          "example": "I ended up watching the entire boring series."
+        },
+        {
+          "word": "unexpected",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I ended up loving the unexpected result."
+        },
+        {
+          "word": "beverages",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I stopped drinking sugary beverages."
+        },
+        {
+          "word": "pointless",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I stopped arguing about pointless things."
+        },
+        {
+          "word": "unnecessary",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I stopped using unnecessary plastic bags."
+        },
+        {
+          "word": "comparing",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I stopped comparing myself to others."
+        },
+        {
+          "word": "constantly",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I stopped checking social media constantly."
+        }
+      ]
+    },
+    {
+      "day": 19,
+      "title": "Day 19 패턴 학습",
+      "patterns": [
+        {
+          "id": 73,
+          "title": "No matter how ~",
+          "description": "아무리 ~해도",
+          "color": "#38bdf8",
+          "examples": [
+            {
+              "english": "No matter how difficult, don't give up.",
+              "korean": "아무리 어려워도 포기하지 마."
+            },
+            {
+              "english": "No matter how tired, I finish my work.",
+              "korean": "아무리 피곤해도 일 끝내."
+            },
+            {
+              "english": "No matter how expensive, quality matters.",
+              "korean": "아무리 비싸도 품질이 중요해."
+            },
+            {
+              "english": "No matter how busy, I call my mom.",
+              "korean": "아무리 바빠도 엄마한테 전화해."
+            },
+            {
+              "english": "No matter how late, I keep my promise.",
+              "korean": "아무리 늦어도 약속 지켜."
+            }
+          ]
+        },
+        {
+          "id": 74,
+          "title": "Even if ~",
+          "description": "설령 ~해도",
+          "color": "#e879f9",
+          "examples": [
+            {
+              "english": "Even if it's rainy, let's go hiking.",
+              "korean": "비가 와도 등산 가자."
+            },
+            {
+              "english": "Even if it's inconvenient, it's worth trying.",
+              "korean": "불편해도 시도할 가치가 있어."
+            },
+            {
+              "english": "Even if you fail, valuable lessons remain.",
+              "korean": "실패해도 소중한 교훈이 남아."
+            },
+            {
+              "english": "Even if it's scary, face your fear.",
+              "korean": "무서워도 두려움에 맞서."
+            },
+            {
+              "english": "Even if it's uncomfortable, be honest.",
+              "korean": "불편해도 솔직해져."
+            }
+          ]
+        },
+        {
+          "id": 75,
+          "title": "Unless ~",
+          "description": "~하지 않으면",
+          "color": "#f472b6",
+          "examples": [
+            {
+              "english": "Unless you hurry, you'll miss the train.",
+              "korean": "서두르지 않으면 기차 놓쳐."
+            },
+            {
+              "english": "Unless you ask directly, you won't know.",
+              "korean": "직접 물어보지 않으면 모를 거야."
+            },
+            {
+              "english": "Unless it's urgent, I prefer texting.",
+              "korean": "급하지 않으면 문자가 좋아."
+            },
+            {
+              "english": "Unless the weather improves, we'll cancel.",
+              "korean": "날씨 안 좋아지면 취소할 거야."
+            },
+            {
+              "english": "Unless you're interested, don't force yourself.",
+              "korean": "관심 없으면 억지로 하지 마."
+            }
+          ]
+        },
+        {
+          "id": 76,
+          "title": "It depends on ~",
+          "description": "~에 따라 달라",
+          "color": "#fbbf24",
+          "examples": [
+            {
+              "english": "It depends on the specific situation.",
+              "korean": "구체적인 상황에 따라 달라."
+            },
+            {
+              "english": "It depends on your personal preference.",
+              "korean": "개인 취향에 따라 달라."
+            },
+            {
+              "english": "It depends on the available budget.",
+              "korean": "가용 예산에 따라 달라."
+            },
+            {
+              "english": "It depends on who's making the decision.",
+              "korean": "누가 결정하느냐에 따라 달라."
+            },
+            {
+              "english": "It depends on what you really want.",
+              "korean": "네가 진짜 원하는 게 뭔지에 따라 달라."
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "difficult",
+          "meaning": "어려운",
+          "example": "No matter how difficult, don't give up."
+        },
+        {
+          "word": "matter",
+          "meaning": "단어 뜻 확인하기",
+          "example": "No matter how tired, I finish my work."
+        },
+        {
+          "word": "expensive",
+          "meaning": "비싼",
+          "example": "No matter how expensive, quality matters."
+        },
+        {
+          "word": "matter",
+          "meaning": "단어 뜻 확인하기",
+          "example": "No matter how busy, I call my mom."
+        },
+        {
+          "word": "promise",
+          "meaning": "약속하다",
+          "example": "No matter how late, I keep my promise."
+        },
+        {
+          "word": "hiking",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Even if it's rainy, let's go hiking."
+        },
+        {
+          "word": "inconvenient",
+          "meaning": "불편한",
+          "example": "Even if it's inconvenient, it's worth trying."
+        },
+        {
+          "word": "valuable",
+          "meaning": "가치있는",
+          "example": "Even if you fail, valuable lessons remain."
+        },
+        {
+          "word": "scary",
+          "meaning": "무서운",
+          "example": "Even if it's scary, face your fear."
+        },
+        {
+          "word": "uncomfortable",
+          "meaning": "불편한",
+          "example": "Even if it's uncomfortable, be honest."
+        },
+        {
+          "word": "unless",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Unless you hurry, you'll miss the train."
+        },
+        {
+          "word": "directly",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Unless you ask directly, you won't know."
+        },
+        {
+          "word": "texting",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Unless it's urgent, I prefer texting."
+        },
+        {
+          "word": "improves",
+          "meaning": "향상시키다",
+          "example": "Unless the weather improves, we'll cancel."
+        },
+        {
+          "word": "interested",
+          "meaning": "단어 뜻 확인하기",
+          "example": "Unless you're interested, don't force yourself."
+        },
+        {
+          "word": "situation",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It depends on the specific situation."
+        },
+        {
+          "word": "preference",
+          "meaning": "선호",
+          "example": "It depends on your personal preference."
+        },
+        {
+          "word": "available",
+          "meaning": "가능한",
+          "example": "It depends on the available budget."
+        },
+        {
+          "word": "decision",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It depends on who's making the decision."
+        },
+        {
+          "word": "depends",
+          "meaning": "단어 뜻 확인하기",
+          "example": "It depends on what you really want."
+        }
+      ]
+    },
+    {
+      "day": 20,
+      "title": "Day 20 패턴 학습",
+      "patterns": [
+        {
+          "id": 77,
+          "title": "There's no point in ~",
+          "description": "~해봤자 소용없어",
+          "color": "#4ade80",
+          "examples": [
+            {
+              "english": "There's no point in excessive worrying.",
+              "korean": "지나치게 걱정해봤자 소용없어."
+            },
+            {
+              "english": "There's no point in blaming each other.",
+              "korean": "서로 탓해봤자 소용없어."
+            },
+            {
+              "english": "There's no point in pretending falsely.",
+              "korean": "거짓으로 가장해봤자 소용없어."
+            },
+            {
+              "english": "There's no point in rushing carelessly.",
+              "korean": "조심성 없이 서둘러봤자 소용없어."
+            },
+            {
+              "english": "There's no point in avoiding the obvious.",
+              "korean": "명백한 걸 피해봤자 소용없어."
+            }
+          ]
+        },
+        {
+          "id": 78,
+          "title": "There's nothing wrong with ~",
+          "description": "~해도 문제없어",
+          "color": "#f87171",
+          "examples": [
+            {
+              "english": "There's nothing wrong with being cautious.",
+              "korean": "조심해도 문제없어."
+            },
+            {
+              "english": "There's nothing wrong with asking politely.",
+              "korean": "예의 바르게 물어봐도 문제없어."
+            },
+            {
+              "english": "There's nothing wrong with taking breaks.",
+              "korean": "휴식 취해도 문제없어."
+            },
+            {
+              "english": "There's nothing wrong with changing plans.",
+              "korean": "계획 바꿔도 문제없어."
+            },
+            {
+              "english": "There's nothing wrong with being different.",
+              "korean": "달라도 문제없어."
+            }
+          ]
+        },
+        {
+          "id": 79,
+          "title": "What if ~?",
+          "description": "~하면 어떡해?",
+          "color": "#c084fc",
+          "examples": [
+            {
+              "english": "What if the original plan fails?",
+              "korean": "원래 계획이 실패하면 어떡해?"
+            },
+            {
+              "english": "What if they don't approve officially?",
+              "korean": "공식적으로 승인 안 해주면 어떡해?"
+            },
+            {
+              "english": "What if we miss this golden opportunity?",
+              "korean": "이 황금 기회 놓치면 어떡해?"
+            },
+            {
+              "english": "What if the unexpected situation happens?",
+              "korean": "예상치 못한 상황 생기면 어떡해?"
+            },
+            {
+              "english": "What if I make an embarrassing mistake?",
+              "korean": "창피한 실수하면 어떡해?"
+            }
+          ]
+        },
+        {
+          "id": 80,
+          "title": "I wish I could ~",
+          "description": "~할 수 있으면 좋겠어",
+          "color": "#818cf8",
+          "examples": [
+            {
+              "english": "I wish I could speak fluent English.",
+              "korean": "유창한 영어 할 수 있으면 좋겠어."
+            },
+            {
+              "english": "I wish I could visit more frequently.",
+              "korean": "더 자주 방문할 수 있으면 좋겠어."
+            },
+            {
+              "english": "I wish I could understand complex jokes.",
+              "korean": "복잡한 농담 이해할 수 있으면 좋겠어."
+            },
+            {
+              "english": "I wish I could travel more freely.",
+              "korean": "더 자유롭게 여행할 수 있으면 좋겠어."
+            },
+            {
+              "english": "I wish I could express myself better.",
+              "korean": "나를 더 잘 표현할 수 있으면 좋겠어."
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "word": "excessive",
+          "meaning": "과도한",
+          "example": "There's no point in excessive worrying."
+        },
+        {
+          "word": "blaming",
+          "meaning": "단어 뜻 확인하기",
+          "example": "There's no point in blaming each other."
+        },
+        {
+          "word": "pretending",
+          "meaning": "단어 뜻 확인하기",
+          "example": "There's no point in pretending falsely."
+        },
+        {
+          "word": "carelessly",
+          "meaning": "단어 뜻 확인하기",
+          "example": "There's no point in rushing carelessly."
+        },
+        {
+          "word": "avoiding",
+          "meaning": "단어 뜻 확인하기",
+          "example": "There's no point in avoiding the obvious."
+        },
+        {
+          "word": "cautious",
+          "meaning": "신중한",
+          "example": "There's nothing wrong with being cautious."
+        },
+        {
+          "word": "politely",
+          "meaning": "공손한",
+          "example": "There's nothing wrong with asking politely."
+        },
+        {
+          "word": "nothing",
+          "meaning": "아무것도 아님",
+          "example": "There's nothing wrong with taking breaks."
+        },
+        {
+          "word": "changing",
+          "meaning": "단어 뜻 확인하기",
+          "example": "There's nothing wrong with changing plans."
+        },
+        {
+          "word": "different",
+          "meaning": "다른",
+          "example": "There's nothing wrong with being different."
+        },
+        {
+          "word": "original",
+          "meaning": "원래의",
+          "example": "What if the original plan fails?"
+        },
+        {
+          "word": "officially",
+          "meaning": "단어 뜻 확인하기",
+          "example": "What if they don't approve officially?"
+        },
+        {
+          "word": "opportunity",
+          "meaning": "단어 뜻 확인하기",
+          "example": "What if we miss this golden opportunity?"
+        },
+        {
+          "word": "unexpected",
+          "meaning": "단어 뜻 확인하기",
+          "example": "What if the unexpected situation happens?"
+        },
+        {
+          "word": "embarrassing",
+          "meaning": "당황스러운",
+          "example": "What if I make an embarrassing mistake?"
+        },
+        {
+          "word": "english",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I wish I could speak fluent English."
+        },
+        {
+          "word": "frequently",
+          "meaning": "자주",
+          "example": "I wish I could visit more frequently."
+        },
+        {
+          "word": "complex",
+          "meaning": "복잡한",
+          "example": "I wish I could understand complex jokes."
+        },
+        {
+          "word": "travel",
+          "meaning": "여행하다",
+          "example": "I wish I could travel more freely."
+        },
+        {
+          "word": "express",
+          "meaning": "단어 뜻 확인하기",
+          "example": "I wish I could express myself better."
+        }
+      ]
+    }
+  ]
+};

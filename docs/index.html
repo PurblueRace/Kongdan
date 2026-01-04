@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>패턴 영어 - 오늘의 학습</title>
+    <meta name="description" content="원어민이 자주 쓰는 영어 패턴을 하루 40개씩 학습하세요">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 20px;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .nav-item {
+            padding: 12px 24px;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+        }
+
+        .nav-item.active {
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+        }
+
+        .day-selector {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 4px 0 16px;
+            margin-bottom: 16px;
+            scrollbar-width: none;
+        }
+
+        .day-selector::-webkit-scrollbar {
+            display: none;
+        }
+
+        .day-btn {
+            padding: 10px 18px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .day-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .day-btn.active {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.3);
+            color: #a5b4fc;
+        }
+
+        .day-btn.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: rgba(100, 100, 100, 0.1);
+        }
+
+        .day-btn.cleared {
+            border-color: rgba(16, 185, 129, 0.4);
+            color: #34d399;
+        }
+
+        .day-cleared-badge {
+            text-align: center;
+            padding: 12px 20px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+            color: #34d399;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .toast-message {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            white-space: nowrap;
+        }
+
+        .toast-message.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .footer {
+            margin-bottom: 80px;
+        }
+
+        /* Header Layout */
+        .header-top {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .settings-btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+
+        .settings-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 400px;
+            border: 1px solid var(--border-color);
+            padding: 24px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            box-sizing: border-box;
+        }
+
+        .input-help {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            line-height: 1.4;
+        }
+
+        .input-help a {
+            color: #6366f1;
+            text-decoration: none;
+        }
+
+        .setting-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .primary-btn {
+            width: 100%;
+            padding: 12px;
+            background: #6366f1;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #4b5563;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #6366f1;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(16px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-top">
+                <span class="header-emoji">📚</span>
+                <button id="settingsBtn" class="settings-btn" title="설정">⚙️</button>
+            </div>
+            <h1>오늘의 패턴 영어</h1>
+            <p class="header-subtitle">원어민이 자주 쓰는 필수 패턴을 마스터하세요</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+            </div>
+            <div class="progress-text">
+                <span>오늘의 진행률</span>
+                <span class="progress-count"><span id="completedCount">0</span> / <span id="totalCount">40</span></span>
+            </div>
+        </header>
+        <div class="day-selector" id="daySelector"></div>
+        <main class="patterns-grid" id="patternsGrid">
+            <div class="loading">
+                <div class="loading-spinner"></div><span>패턴 불러오는 중...</span>
+            </div>
+        </main>
+        <footer class="footer">매일 40개씩, 꾸준히 학습하면 영어가 들립니다 ✨</footer>
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item active">📚 학습</a>
+            <a href="quiz.html" class="nav-item">📝 시험</a>
+            <a href="review.html" class="nav-item">🔄 복습</a>
+        </nav>
+    </div>
+    <!-- API Key Modal -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>설정</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Gemini API Key (챗봇용) -->
+                <div class="input-group">
+                    <label for="apiKeyInput">💬 챗봇 API Key (Gemini)</label>
+                    <input type="password" id="apiKeyInput" placeholder="Gemini API Key">
+                    <p class="input-help">
+                        <a href="https://aistudio.google.com/app/apikey" target="_blank">키 발급받기 ↗</a>
+                        <br>영어 도우미 챗봇에 사용됩니다.
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="saveApiKeyBtn" class="primary-btn">저장</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Chat Button -->
+    <button id="chatFab" class="chat-fab" title="질문하기">💬</button>
+
+    <!-- Chat Panel -->
+    <div id="chatPanel" class="chat-panel">
+        <div class="chat-header">
+            <span>🤖 영어 도우미</span>
+            <button id="closeChatBtn" class="chat-close-btn">&times;</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-message bot">
+                <p>안녕하세요! 영어 문장에 대해 궁금한 것이 있으면 질문해주세요. 문법, 표현, 뉘앙스 등 무엇이든 짧고 명확하게 답해드릴게요! 😊</p>
+            </div>
+        </div>
+        <div class="chat-input-wrap">
+            <input type="text" id="chatInput" placeholder="예: 'I'm gonna' 무슨 뜻이에요?">
+            <button id="chatSendBtn">전송</button>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+server/node_modules/
+
+# Environment files
+.env
+*.env.local
+
+# Credentials (보안!)
+*.json
+!data/*.json
+!docs/audio/audio_mapping.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+npm-debug.log*
