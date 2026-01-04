@@ -83,9 +83,11 @@ async function speakText(text, lang, event) {
   // ===== Kokoro TTS (로컬 WebGPU - 완전 무료) =====
   if (lang === 'en') {
     try {
+      // 1. 라이브러리 동적 로드
       if (!window.Kokoro) {
-        showToast('⏳ AI 엔진 로딩 중... 잠시 후 다시 시도해주세요.');
-        return;
+        showToast('⏳ AI 엔진(Kokoro) 초기화 중...');
+        const mod = await import("https://cdn.jsdelivr.net/npm/kokoro-js@1.0.0-beta.3/dist/kokoro.js");
+        window.Kokoro = mod;
       }
       if (!window.kokoroModel) {
         showToast('⏳ 최신 AI 모델(Kokoro) 다운로드 중... (약 1분 소요)');
