@@ -101,17 +101,25 @@ async function speakText(text, lang, event) {
       }
 
       if (audioMapping[text]) {
-        showToast(`🎵 MP3 재생: ${audioMapping[text]}`);
         try {
-          const audioPath = `audio/${audioMapping[text]}`;
-          const audio = new Audio(audioPath);
+          // 절대 경로로 변환 (안전성 확보)
+          const audioUrl = new URL(`audio/${audioMapping[text]}`, window.location.href).href;
+          showToast(`🎵 파일 로드 중...`);
+          console.log('Target Audio:', audioUrl);
 
+          const audio = new Audio(audioUrl);
+
+          audio.onplay = () => showToast('▶️ 재생 시작 (소리 안 나면 매너모드 확인)');
           audio.onended = finishSpeaking;
           audio.onerror = (e) => {
-            console.error('MP3 Error:', e);
-            showToast('⚠️ MP3 에러 -> 브라우저 TTS');
+            const err = audio.error;
+            console.error('MP3 Error:', err);
+            showToast(`⚠️ 에러(code:${err?.code}): ${err?.message || '로드 실패'}`);
             playBrowserTTS(text, lang, finishSpeaking);
           };
+
+          // 로드 상태 확인용
+          audio.oncanplay = () => console.log('Can play');
 
           await audio.play();
           return;
