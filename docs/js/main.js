@@ -102,31 +102,39 @@ async function speakText(text, lang, event) {
 
       if (audioMapping[text]) {
         try {
-          // 절대 경로로 변환 (안전성 확보)
-          const audioUrl = new URL(`audio/${audioMapping[text]}`, window.location.href).href;
-          showToast(`🎵 파일 로드 중...`);
-          console.log('Target Audio:', audioUrl);
+          const audioUrl = `audio/${audioMapping[text]}`;
+          showToast(`🎵 로딩 중: ${audioMapping[text]}`);
 
-          const audio = new Audio(audioUrl);
+          // Howler.js 사용 (iOS 호환성 최강)
+          const sound = new Howl({
+            src: [audioUrl],
+            html5: true, // HTML5 Audio 강제 사용 (모바일 스트리밍 최적화)
+            volume: 1.0,
+            onplay: function () {
+              showToast('▶️ Howler 재생 시작');
+            },
+            onend: function () {
+              finishSpeaking();
+            },
+            onloaderror: function (id, err) {
+              console.error('Loader Error:', err);
+              showToast('⚠️ 로드 에러 -> 브라우저 TTS');
+              playBrowserTTS(text, lang, finishSpeaking);
+            },
+            onplayerror: function (id, err) {
+              console.error('Play Error:', err);
+              sound.once('unlock', function () {
+                sound.play();
+              });
+              showToast('⚠️ 재생 제한 -> 클릭으로 해제 시도');
+            }
+          });
 
-          audio.onplay = () => showToast('▶️ 재생 시작 (소리 안 나면 매너모드 확인)');
-          audio.onended = finishSpeaking;
-          audio.onerror = (e) => {
-            const err = audio.error;
-            console.error('MP3 Error:', err);
-            showToast(`⚠️ 에러(code:${err?.code}): ${err?.message || '로드 실패'}`);
-            playBrowserTTS(text, lang, finishSpeaking);
-          };
-
-          // 로드 상태 확인용
-          audio.oncanplay = () => console.log('Can play');
-
-          await audio.play();
+          sound.play();
           return;
 
         } catch (e) {
-          console.error('MP3 재생 실패:', e);
-          showToast(`⚠️ 재생 실패: ${e.message}`);
+          console.error('Howler Init Fail:', e);
           playBrowserTTS(text, lang, finishSpeaking);
         }
       }
