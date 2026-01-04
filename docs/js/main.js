@@ -80,58 +80,47 @@ async function speakText(text, lang, event) {
 
   const finishSpeaking = () => btn?.classList.remove('speaking');
 
-  // ===== Kokoro TTS (로컬 WebGPU - 완전 무료) =====
   if (lang === 'en') {
     try {
-      // 1. 라이브러리 동적 로드
-      if (!window.Kokoro) {
-        showToast('⏳ AI 엔진(Kokoro) 초기화 중...');
-        const mod = await import("https://cdn.jsdelivr.net/npm/kokoro-js@1.2.1/dist/kokoro.web.js");
-        window.Kokoro = mod;
+      // 0. AudioContext 준비 (iOS Safari 필수: 클릭 직후 resume)
+      if (!window.audioCtx) {
+        window.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       }
-      if (!window.kokoroModel) {
-        showToast('⏳ AI 모델 준비 중... (캐시 로드)');
-        // 모델 초기화 (q8 양자화 모델 사용 -> 속도 2~3배 향상)
-        window.kokoroModel = await window.Kokoro.KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-ONNX", {
-          dtype: "q8"
-        });
-        // 웜업 (미리 공백을 한번 읽어서 파이프라인 예열)
-        console.log("🔥 Kokoro 웜업 시작...");
-        await window.kokoroModel.generate(".", { voice: "af_bella", speed: 1.0 });
-        console.log("✅ Kokoro 웜업 완료");
+      if (window.audioCtx.state === 'suspended') {
+        await window.audioCtx.resume();
       }
 
-      showToast('🔊 Kokoro AI가 읽어주는 중...');
+      // ===== 1. 로컬 MP3 재생 (Web Audio API 사용 - Safari 호환) =====
+      if (audioMapping && audioMapping[text]) {
+        try {
+          const audioPath = `audio/${audioMapping[text]}`;
 
-      // 음성 생성
-      const audio = await window.kokoroModel.generate(text, {
-        voice: "af_bella", // 미국 여성 (가장 인기 있는 음성)
-        speed: 1.0
-      });
+          // MP3 파일 Fetch
+          const response = await fetch(audioPath);
+          if (!response.ok) throw new Error('Audio file not found');
 
-      // 오디오 재생
-      const blob = new Blob([audio.toWav()], { type: 'audio/wav' });
-      const audioUrl = URL.createObjectURL(blob);
-      const audioEl = new Audio(audioUrl);
+          const arrayBuffer = await response.arrayBuffer();
+          const audioBuffer = await window.audioCtx.decodeAudioData(arrayBuffer);
 
-      audioEl.onended = () => {
-        finishSpeaking();
-        URL.revokeObjectURL(audioUrl);
-      };
-      audioEl.onerror = () => {
-        console.error('Kokoro 오디오 재생 실패');
-        playBrowserTTS(text, lang, finishSpeaking);
-      };
+          const source = window.audioCtx.createBufferSource();
+          source.buffer = audioBuffer;
+          source.connect(window.audioCtx.destination);
 
-      await audioEl.play();
-      return;
+          source.onended = finishSpeaking;
+          source.start();
+          return;
 
+        } catch (e) {
+          console.error('MP3 재생 실패:', e);
+          // 실패 시 브라우저 TTS로 넘어감
+        }
+      }
+
+      // ===== 2. 파일 없으면 브라우저 TTS (폴백) =====
+      playBrowserTTS(text, lang, finishSpeaking);
     } catch (e) {
-      console.error('Kokoro TTS 오류:', e);
-      // WebGPU 미지원 브라우저 등을 위한 안내
-      showToast('⚠️ Kokoro 오류: ' + (e.message || '지원하지 않는 브라우저일 수 있습니다.'));
-      finishSpeaking();
-      return; // 폴백 방지
+      console.error('Audio Error:', e);
+      playBrowserTTS(text, lang, finishSpeaking);
     }
   }
 
