@@ -86,7 +86,7 @@ async function speakText(text, lang, event) {
       // 1. 라이브러리 동적 로드
       if (!window.Kokoro) {
         showToast('⏳ AI 엔진(Kokoro) 초기화 중...');
-        const mod = await import("https://esm.sh/kokoro-js@1.0.0-beta.3");
+        const mod = await import("https://cdn.jsdelivr.net/npm/kokoro-js@1.2.1/dist/kokoro.web.js");
         window.Kokoro = mod;
       }
       if (!window.kokoroModel) {
