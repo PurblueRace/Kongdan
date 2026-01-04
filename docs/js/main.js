@@ -9,38 +9,8 @@ const CLEARED_KEY = 'patternEnglish_cleared';
 
 // ===== TTS (Text-to-Speech) =====
 let preferredVoice = null;
-let audioMapping = null; // 문장-파일 매핑
-
-// MD5 해시 함수 (파일명 생성용)
-function md5Hash(str) {
-  // 간단한 해시 - 서버에서 생성한 것과 동일하게 맞춰야 함
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    const char = str.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
-    hash = hash & hash;
-  }
-  // MD5 대신 간단한 해시 사용 시 -> 실제로는 audio_mapping.json 사용
-  return Math.abs(hash).toString(16).padStart(12, '0').slice(0, 12);
-}
-
-// 오디오 매핑 로드
-async function loadAudioMapping() {
-  try {
-    const response = await fetch('audio/audio_mapping.json');
-    if (response.ok) {
-      audioMapping = await response.json();
-      console.log('✅ 오디오 매핑 로드 완료:', Object.keys(audioMapping).length, '개 문장');
-    }
-  } catch (e) {
-    console.log('📢 오디오 매핑 없음 - 브라우저 TTS 사용');
-  }
-}
 
 function initTTS() {
-  // 오디오 매핑 로드
-  loadAudioMapping();
-
   // 음성 목록이 로드되면 최적의 영어 음성 선택
   if ('speechSynthesis' in window) {
     const loadVoices = () => {
@@ -59,7 +29,6 @@ function initTTS() {
 }
 
 async function speakEnglish(text, event) {
-  // speakText를 영어 모드로 호출
   await speakText(text, 'en', event);
 }
 
@@ -74,26 +43,7 @@ async function speakText(text, lang, event) {
 
   const finishSpeaking = () => btn?.classList.remove('speaking');
 
-  // ===== 로컬 오디오 파일 재생 (최우선) =====
-  if (audioMapping && audioMapping[text]) {
-    try {
-      const audioFile = `audio/${audioMapping[text]}`;
-      const audio = new Audio(audioFile);
-      audio.onended = finishSpeaking;
-      audio.onerror = () => {
-        console.log('오디오 파일 로드 실패, 브라우저 TTS로 폴백');
-        playBrowserTTS(text, lang, finishSpeaking);
-      };
-      await audio.play();
-      return;
-    } catch (e) {
-      console.error('오디오 재생 오류:', e);
-      playBrowserTTS(text, lang, finishSpeaking);
-      return;
-    }
-  }
-
-  // ===== 브라우저 기본 TTS (폴백) =====
+  // ===== 브라우저 기본 TTS 사용 =====
   playBrowserTTS(text, lang, finishSpeaking);
 }
 
