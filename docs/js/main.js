@@ -202,12 +202,6 @@ function initChatbot() {
     const text = input.value.trim();
     if (!text) return;
 
-    // API 키 체크
-    if (!geminiApiKey) {
-      addChatMessage('bot', '⚠️ 설정에서 Gemini API Key를 먼저 입력해주세요!');
-      return;
-    }
-
     // 사용자 메시지 표시
     addChatMessage('user', text);
     input.value = '';
@@ -216,54 +210,46 @@ function initChatbot() {
     const loadingId = addChatMessage('bot', '', true);
 
     try {
-      // 대화 기록에 추가
-      chatHistory.push({ role: 'user', parts: [{ text }] });
+      // 대화 기록 구성
+      const history = chatHistory.map(h => ({
+        role: h.role === 'model' ? 'assistant' : h.role,
+        text: h.parts[0].text
+      }));
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiApiKey}`, {
+      // 백엔드 API 호출 (Vertex AI Gemini)
+      const response = await fetch('http://localhost:3001/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: CHATBOT_SYSTEM_PROMPT }] },
-          contents: chatHistory
-        })
+        body: JSON.stringify({ message: text, history })
       });
 
       const data = await response.json();
-      console.log('Gemini response:', data); // 디버깅용
+      console.log('Chat response:', data);
 
       // 로딩 메시지 제거
       document.getElementById(loadingId)?.remove();
 
-      // API 에러 체크
       if (data.error) {
-        console.error('Gemini API Error:', data.error);
-        addChatMessage('bot', `⚠️ API 오류: ${data.error.message || '알 수 없는 오류'}`);
-        chatHistory.pop(); // 실패한 메시지 제거
+        addChatMessage('bot', `⚠️ 오류: ${data.error}`);
         return;
       }
 
-      // 응답 파싱
-      if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
-        const reply = data.candidates[0].content.parts[0].text;
-        addChatMessage('bot', reply);
-        chatHistory.push({ role: 'model', parts: [{ text: reply }] });
+      if (data.reply) {
+        addChatMessage('bot', data.reply);
+        chatHistory.push({ role: 'user', parts: [{ text }] });
+        chatHistory.push({ role: 'model', parts: [{ text: data.reply }] });
 
         // 대화 기록 20개로 제한
         if (chatHistory.length > 20) {
           chatHistory = chatHistory.slice(-20);
         }
-      } else if (data.candidates && data.candidates[0]?.finishReason) {
-        addChatMessage('bot', `응답 생성 실패: ${data.candidates[0].finishReason}`);
-        chatHistory.pop();
       } else {
-        addChatMessage('bot', '죄송해요, 예상치 못한 응답 형식이에요. 콘솔을 확인해주세요.');
-        chatHistory.pop();
+        addChatMessage('bot', '응답이 없어요. 서버를 확인해주세요.');
       }
     } catch (e) {
       document.getElementById(loadingId)?.remove();
       console.error('Chat error:', e);
-      addChatMessage('bot', `오류: ${e.message}`);
-      chatHistory.pop(); // 실패한 메시지 제거
+      addChatMessage('bot', '⚠️ 서버에 연결할 수 없어요. 백엔드 서버를 실행해주세요!');
     }
   };
 
