@@ -100,58 +100,24 @@ async function speakText(text, lang, event) {
         return;
       }
 
-      if (audioMapping[text]) {
+      // ===== 영어 MP3 재생 (한글과 동일한 로직) =====
+      if (audioMapping && audioMapping[text]) {
         try {
-          const rawFilename = audioMapping[text];
-          // URL Encode (공백, 특수문자 처리)
-          const encodedFilename = encodeURIComponent(rawFilename).replace(/%2E/g, '.'); // .mp3는 유지
-          const audioUrl = `audio/${rawFilename}`; // Howler는 내부적으로 처리함, 하지만 raw가 나을수도
-
-          showToast(`🎵 파일: ${rawFilename.substring(0, 10)}...`);
-          console.log(`Trying to play: ${audioUrl}`);
-
-          const sound = new Howl({
-            src: [audioUrl],
-            html5: true, // true: HTML5 Audio (CORS/디코딩 문제 회피)
-            format: ['mp3'],
-            volume: 1.0,
-            mute: false,
-            onload: function () {
-              console.log('Howler Loaded');
-            },
-            onplay: function () {
-              showToast('▶️ 재생 중!');
-              // 볼륨 강제 설정
-              this.volume(1.0);
-            },
-            onend: function () {
-              finishSpeaking();
-            },
-            onloaderror: function (id, err) {
-              console.error('Loader Error:', err, audioUrl);
-              showToast(`⚠️ 로드 실패: ${err}`);
-              playBrowserTTS(text, lang, finishSpeaking);
-            },
-            onplayerror: function (id, err) {
-              console.error('Play Error:', err);
-              showToast(`⚠️ 재생 에러 -> 브라우저 TTS`);
-              playBrowserTTS(text, lang, finishSpeaking);
-            }
-          });
-
-          // Howler 글로벌 볼륨 확인
-          Howler.volume(1.0);
-
-          sound.play();
+          const audioFile = `audio/${audioMapping[text]}`;
+          const audio = new Audio(audioFile);
+          audio.onended = finishSpeaking;
+          audio.onerror = () => {
+            console.error('MP3 로드 실패');
+            playBrowserTTS(text, lang, finishSpeaking);
+          };
+          await audio.play();
           return;
-
         } catch (e) {
-          console.error('Howler Init Fail:', e);
-          playBrowserTTS(text, lang, finishSpeaking);
+          console.error('영어 오디오 재생 오류:', e);
         }
       }
 
-      // ===== 2. 파일 없으면 브라우저 TTS (폴백) =====
+      // MP3 없으면 브라우저 TTS
       playBrowserTTS(text, lang, finishSpeaking);
     } catch (e) {
       console.error('Audio Error:', e);
